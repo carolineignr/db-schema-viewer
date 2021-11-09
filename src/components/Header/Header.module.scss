@@ -1,0 +1,9 @@
+.header {
+	background-color: black;
+	color: blanchedalmond;
+}
+
+.nav {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
