@@ -60,11 +60,7 @@ const Form = (): ReactElement => {
 
   return (
     <section className={styles.container}>
-      <p className={styles.subtitle}>
-        {' '}
-        <strong>Access your database</strong>
-      </p>
-      <small>Type your database credentials:</small>
+      <p className={styles.description}>Type your database credentials:</p>
 
       <form onSubmit={handleSubmit}>
         <input

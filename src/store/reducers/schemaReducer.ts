@@ -18,6 +18,11 @@ export const schemaReducer = (
           ...action.payload,
         },
       };
+    case 'SET_DB_MODAL':
+      return {
+        ...state,
+        databaseModalOpen: action.payload,
+      };
     default:
       return state;
   }

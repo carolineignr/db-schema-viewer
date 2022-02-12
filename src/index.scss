@@ -8,3 +8,26 @@
   font-family: 'Nobile', Arial, Helvetica, sans-serif;
 }
 
+body {
+  background: rgb(0,0,0);
+	background: linear-gradient(150deg, rgba(0,0,0,1) 18%, rgb(32, 3, 36) 43%, rgba(0,0,0,1) 58%, rgba(0,0,0,1) 100%);
+  animation: colors 20s ease infinite;
+}
+
+@keyframes colors {
+	0% {
+		background-position: 0% 50%;
+	}
+	25% {
+		background-position: 25% 75%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	75% {
+		background-position: 75% 25%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

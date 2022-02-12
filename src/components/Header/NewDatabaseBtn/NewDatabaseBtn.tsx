@@ -1,16 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setDatabaseModal } from '../../../store/actions/schemaActions';
 import styles from './NewDatabaseBtn.module.scss';
 
 export const NewDatabaseBtn = (): any => {
-  function openNewDatabaseModal(): void {
-    console.log('Aqui vai abrir um modal');
+  const dispatch = useDispatch();
+
+  function openDatabaseModal(): void {
+    dispatch(setDatabaseModal(true));
   }
 
   return (
     <button
       className={styles.addDatabaseBtn}
       type="button"
-      onClick={openNewDatabaseModal}
+      onClick={openDatabaseModal}
     >
       + Add a new database
     </button>

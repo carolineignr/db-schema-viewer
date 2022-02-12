@@ -14,12 +14,16 @@ export type ReduxState = {
   schemas: SchemaState[];
   inputParams: DatabaseInputParams;
   loading: boolean;
+  databaseModalOpen: boolean;
 };
 
 export type SchemaState = {
+  id: number;
   tables: TableState[];
   views?: {}[];
   index?: {}[];
+  activeTable?: {};
+  activeColumn?: {};
 };
 
 export type InputParamsState = {

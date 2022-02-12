@@ -17,6 +17,7 @@ const initialState = {
     password: '',
   },
   loading: false,
+  databaseModalOpen: false,
 };
 const store = createStore(schemaReducer, initialState, composeWithDevTools());
 

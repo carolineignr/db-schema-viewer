@@ -11,3 +11,8 @@ export const setInputParams = (
   type: 'SET_INPUT_PARAMS',
   payload: inputParamsObj,
 });
+
+export const setDatabaseModal = (isOpen: boolean): ReduxAction => ({
+  type: 'SET_DB_MODAL',
+  payload: isOpen,
+});

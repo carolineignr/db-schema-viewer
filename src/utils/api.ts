@@ -5,7 +5,7 @@ import { DatabaseInputParams } from './types';
 dotenv.config();
 
 const API_URL = process.env.SERVER || 'localhost';
-const API_PORT = process.env.API_PORT || '7000';
+const API_PORT = process.env.API_PORT || '7001';
 const GET_SCHEMA_PATH = '/api/database-schema';
 
 export const SCHEMA_GET = async (

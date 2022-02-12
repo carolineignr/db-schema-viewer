@@ -3,6 +3,12 @@
 	border: solid 3px white;
 	border-radius: 5px;
 	margin: 0 50px;
-	height: 50rem;
+	height: 90vh;
 	color: black;
+}
+
+.tablesWrapper {
+	display: flex;
+	padding: 5px;
+	justify-content: space-between;
 }

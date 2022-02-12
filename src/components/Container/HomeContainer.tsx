@@ -34,12 +34,6 @@ export default function HomeContainer(): ReactElement {
     });
   }
 
-  const dropdownList = (): any => {
-    data.children = [...data.children, getTablesFromState()];
-
-    return data;
-  };
-
   const renderTables = (): ReactElement => {
     return <p>Teste</p>;
   };

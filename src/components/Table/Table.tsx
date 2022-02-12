@@ -18,15 +18,15 @@ export function Table(props: any): ReactElement {
     <mesh
       {...props}
       ref={mesh}
-      scale={state.isHovered ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+      scale={state.isHovered ? [1.5, 1.5, 0.25] : [1, 1, 0.15]}
       onClick={() => setState({ ...state, isActive: !state.isActive })}
       onPointerOver={() => setState({ ...state, isHovered: true })}
       onPointerOut={() => setState({ ...state, isHovered: false })}
     >
-      <boxBufferGeometry args={[1, 1, 1]} />
+      <boxBufferGeometry args={[1, 1, 2]} />
       <meshStandardMaterial color={state.isActive ? '#820263' : '#D90368'} />
-      <Html distanceFactor={10}>
-        <div className={styles.nameContainer}>{props.name}</div>
+      <Html distanceFactor={5}>
+        <div className={styles.nameContainer}>{props.table.name}</div>
       </Html>
     </mesh>
   );
