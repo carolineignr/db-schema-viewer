@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react';
+import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
-import Modal from 'react-modal';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import { SchemaContainer } from '../../components/SchemaContainer/SchemaContainer.js';
 import { InfoButton } from '../../components/Header/InfoButton/InfoButton';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
-import Form from '../../components/Form/Form';
 import { ReduxState } from '../../utils/types';
 import { setDatabaseModal } from '../../store/actions/schemaActions';
+import Form from '../../components/Form/Form';
 import styles from './Home.module.scss';
 
 export const Home = (): any => {
+  const navigate = useNavigate();
   const schemas = useSelector((state: ReduxState) => state.schemas);
   const isModalOpen = useSelector(
     (state: ReduxState) => state.databaseModalOpen,
@@ -42,6 +44,10 @@ export const Home = (): any => {
     dispatch(setDatabaseModal(false));
   }
 
+  function onClickTable(id: String): void {
+    navigate(`/table/${id}`);
+  }
+
   return (
     <>
       <Header />
@@ -50,7 +56,12 @@ export const Home = (): any => {
         onRequestClose={handleCloseDatabaseModal}
         style={modalCustomStyle}
       >
-        <Form />
+        <div className={styles.modal_container}>
+          <Form />
+          <button type="button" onClick={handleCloseDatabaseModal}>
+            Cancelar
+          </button>
+        </div>
       </Modal>
       <section className={styles.wrapper}>
         <Carousel showThumbs={false}>
@@ -58,7 +69,10 @@ export const Home = (): any => {
             <Canvas>
               <ambientLight />
               <pointLight position={[10, 10, 10]} />
-              <SchemaContainer tables={schema.tables} />
+              <SchemaContainer
+                tables={schema.tables}
+                onClickTable={onClickTable}
+              />
             </Canvas>
           ))}
         </Carousel>

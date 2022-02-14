@@ -5,7 +5,7 @@ import { Html } from '@react-three/drei';
 
 import styles from './Table.module.scss';
 
-export function Table(props: any): ReactElement {
+export const Table = (props: any): ReactElement => {
   const mesh: any = useRef();
   const [state, setState] = useState({ isHovered: false, isActive: false });
 
@@ -14,12 +14,17 @@ export function Table(props: any): ReactElement {
     mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
   });
 
+  function onClickTable(): void {
+    props.onClickTable(props.table.name);
+    setState({ ...state, isActive: !state.isActive });
+  }
+
   return (
     <mesh
       {...props}
       ref={mesh}
       scale={state.isHovered ? [1.5, 1.5, 0.25] : [1, 1, 0.15]}
-      onClick={() => setState({ ...state, isActive: !state.isActive })}
+      onClick={onClickTable}
       onPointerOver={() => setState({ ...state, isHovered: true })}
       onPointerOut={() => setState({ ...state, isHovered: false })}
     >
@@ -30,4 +35,6 @@ export function Table(props: any): ReactElement {
       </Html>
     </mesh>
   );
-}
+};
+
+export default Table;

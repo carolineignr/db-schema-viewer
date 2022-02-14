@@ -2,7 +2,11 @@ import React, { ReactElement, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setInputParams, setSchema } from '../../store/actions/schemaActions';
+import {
+  setDatabaseModal,
+  setInputParams,
+  setSchema,
+} from '../../store/actions/schemaActions';
 
 import requests from '../../utils/index';
 import { ReduxState } from '../../utils/types';
@@ -54,7 +58,10 @@ const Form = (): ReactElement => {
 
   const handleSubmit = async (event: any): Promise<void> => {
     event.preventDefault();
+
     await loadSchema();
+
+    dispatch(setDatabaseModal(false));
     clearInputs();
   };
 
