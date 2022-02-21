@@ -51,6 +51,9 @@ export const Home = (): any => {
   return (
     <>
       <Header />
+      <button type="button" onClick={() => navigate(-1)}>
+        go back
+      </button>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={handleCloseDatabaseModal}

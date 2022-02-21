@@ -6,12 +6,13 @@ import { Html } from '@react-three/drei';
 import styles from './Table.module.scss';
 
 export const Table = (props: any): ReactElement => {
+  const rotation = 0.01;
   const mesh: any = useRef();
   const [state, setState] = useState({ isHovered: false, isActive: false });
 
   useFrame(() => {
-    // eslint-disable-next-line no-multi-assign
-    mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
+    mesh.current.rotation.x = rotation;
+    mesh.current.rotation.y += rotation;
   });
 
   function onClickTable(): void {

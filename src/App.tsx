@@ -10,9 +10,6 @@ function App(): ReactElement {
 
   return (
     <div>
-      <button type="button" onClick={() => navigate(-1)}>
-        go back
-      </button>
       <Routes>
         <Route path="/" element={<Sign />} />
         <Route path="/home" element={<Home />} />
