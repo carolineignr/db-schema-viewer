@@ -3,21 +3,20 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
-import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import { Carousel } from 'react-responsive-carousel';
 
-import { SchemaContainer } from '../../components/SchemaContainer/SchemaContainer.js';
-import { InfoButton } from '../../components/Header/InfoButton/InfoButton';
+import Form from '../../components/Form/Form';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
 import { ReduxState } from '../../utils/types';
 import { setDatabaseModal } from '../../store/actions/schemaActions';
-import Form from '../../components/Form/Form';
+
 import styles from './Home.module.scss';
 
-export const Home = (): any => {
+export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
-  const schemas = useSelector((state: ReduxState) => state.schemas);
+  // const schemas = useSelector((state: ReduxState) => state.schemas);
   const isModalOpen = useSelector(
     (state: ReduxState) => state.databaseModalOpen,
   );
@@ -51,9 +50,6 @@ export const Home = (): any => {
   return (
     <>
       <Header />
-      <button type="button" onClick={() => navigate(-1)}>
-        go back
-      </button>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={handleCloseDatabaseModal}
@@ -67,22 +63,17 @@ export const Home = (): any => {
         </div>
       </Modal>
       <section className={styles.wrapper}>
-        <Carousel showThumbs={false}>
-          {schemas.map((schema) => (
-            <Canvas>
-              <ambientLight />
-              <pointLight position={[10, 10, 10]} />
-              <SchemaContainer
-                tables={schema.tables}
-                onClickTable={onClickTable}
-              />
-            </Canvas>
-          ))}
-        </Carousel>
+        <Canvas>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <mesh>
+            <boxGeometry args={[1, 1, 1]} />
+            <meshStandardMaterial />
+          </mesh>
+        </Canvas>
+        {/* eslint-disable-next-line react/button-has-type */}
+        <button onClick={() => navigate(-1)}>Go back</button>
       </section>
-      <div>
-        <InfoButton />
-      </div>
       <Footer />
     </>
   );

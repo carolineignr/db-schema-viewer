@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setDatabaseModal } from '../../../store/actions/schemaActions';
-import styles from './NewDatabaseBtn.module.scss';
+import styles from './AddDatabaseBtn.module.scss';
 
-export const NewDatabaseBtn = (): any => {
+export const AddDatabaseBtn = (): React.ReactElement => {
   const dispatch = useDispatch();
 
   function openDatabaseModal(): void {
@@ -11,11 +11,7 @@ export const NewDatabaseBtn = (): any => {
   }
 
   return (
-    <button
-      className={styles.addDatabaseBtn}
-      type="button"
-      onClick={openDatabaseModal}
-    >
+    <button className={styles.btn} type="button" onClick={openDatabaseModal}>
       + Add a new database
     </button>
   );

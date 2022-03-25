@@ -31,8 +31,8 @@ const Form = (): ReactElement => {
   async function loadSchema(): Promise<void> {
     try {
       loading = true;
-      const data = await requests.SCHEMA_GET(inputParams);
 
+      const data = await requests.SCHEMA_GET(inputParams);
       if (!data) throw new Error('Não foi possível acessar o banco de dados.');
 
       dispatch(setSchema(data));
@@ -99,9 +99,7 @@ const Form = (): ReactElement => {
           placeholder="Password"
           type="password"
         />
-        <button type="submit" className={styles.submitButton}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </section>
   );

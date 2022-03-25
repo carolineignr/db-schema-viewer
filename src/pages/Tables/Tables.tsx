@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Tables = (): ReactElement => {
-	const params = useParams();
+export const Tables = (): React.ReactElement => {
+  const params = useParams();
 
   return <div>Tables</div>;
 };
