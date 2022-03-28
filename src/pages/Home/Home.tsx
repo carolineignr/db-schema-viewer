@@ -13,6 +13,7 @@ import { ReduxState } from '../../utils/types';
 import { setDatabaseModal } from '../../store/actions/schemaActions';
 
 import styles from './Home.module.scss';
+import Table from '../../components/DatabaseSchema/Table/Table';
 
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
@@ -66,10 +67,8 @@ export const Home = (): React.ReactElement => {
         <Canvas>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
-          <mesh>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial />
-          </mesh>
+          <Table position={[-1.2, 0, -3]} />
+          <Table position={[1.2, 0, 1]} />
         </Canvas>
         {/* eslint-disable-next-line react/button-has-type */}
         <button onClick={() => navigate(-1)}>Go back</button>

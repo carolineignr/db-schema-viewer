@@ -42,3 +42,9 @@ export type TableState = {
   name: any;
   tags: any;
 };
+
+export type PostgreSQLBaseSchema = {
+  table: Array<any>;
+  views: Array<any>;
+  type: Array<any>;
+};
