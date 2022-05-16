@@ -23,6 +23,11 @@ export const schemaReducer = (
         ...state,
         databaseModalOpen: action.payload,
       };
+    case 'SET_CURRENT_TABLE':
+      return {
+        ...state,
+        currentTable: action.payload,
+      };
     default:
       return state;
   }

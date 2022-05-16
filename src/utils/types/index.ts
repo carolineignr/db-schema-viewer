@@ -15,6 +15,7 @@ export type ReduxState = {
   inputParams: DatabaseInputParams;
   loading: boolean;
   databaseModalOpen: boolean;
+  currentTable: TableState;
 };
 
 export type SchemaState = {

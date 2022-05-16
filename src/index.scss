@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Nobile&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
-// Reset style
 * { 
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nobile', Arial, Helvetica, sans-serif;
+  font-family: 'PT Sans', sans-serif;
+	font-size: 1rem;
 }
-//
 
 body{
   background-color: #000;
@@ -23,8 +22,37 @@ button {
 	cursor: pointer;
 
 	&:hover {
-		background-color: #fff;
-		color: #000;
+		background-color: #EAA954;
+		border-color: #EAA954;
+		color: #fff;
 	}
+}
+
+.modalCustomStyle{
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	inset: 40px;
+	background: #000;
+	overflow: auto;
+	border-radius: 10px;
+	outline: none;
+	padding: 20px;
+	min-width: 450px;
+	width: 25%;
+	height: 70%;
+	min-height: 620px;
+	margin: 0px auto;
+	color: white;
+	z-index: 99;
+
+	button {
+		margin: .5rem 0;
+		border-color: none;
+	}
+}
+
+.ReactModal__Overlay--after-open {
+	background-color: #000000de !important;
 }
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Sign from './pages/Sign/Sign';
-import Home from './pages/Home/Home';
-import Tables from './pages/Tables/Tables';
+import Sign from './views/Sign/Sign';
+import Home from './views/Home/Home';
 
 function App(): React.ReactElement {
   return (
@@ -11,7 +10,6 @@ function App(): React.ReactElement {
       <Routes>
         <Route path="/" element={<Sign />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/table/:id" element={<Tables />} />
       </Routes>
     </div>
   );

@@ -29,6 +29,7 @@
 		"no-use-before-define": "off",
 		"no-unused-vars":"warn",
 		"no-useless-concat": "warn",
+		"no-plusplus": "off",
 		"prettier/prettier": "warn",
 		"arrow-body-style": "warn",
 		"quote-props": "warn",

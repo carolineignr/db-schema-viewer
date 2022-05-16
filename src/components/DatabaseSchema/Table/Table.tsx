@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useState } from 'react';
-import { useFrame } from 'react-three-fiber';
-import { Html } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 import styles from './Table.module.scss';
 
@@ -16,14 +15,14 @@ export const Table = (props: any): React.ReactElement => {
   });
 
   function onClickTable(): void {
-    props.onClickTable(props.table.name);
     setState({ ...state, isActive: !state.isActive });
+    props.onClick(props.table);
   }
 
   return (
     <mesh {...props} ref={mesh} onClick={onClickTable}>
       <boxBufferGeometry args={[1, 1, 0.2]} />
-      <meshStandardMaterial color="white" />
+      <meshStandardMaterial color={state.isActive ? 'green' : 'white'} />
     </mesh>
   );
 };

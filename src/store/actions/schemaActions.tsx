@@ -16,3 +16,8 @@ export const setDatabaseModal = (isOpen: boolean): ReduxAction => ({
   type: 'SET_DB_MODAL',
   payload: isOpen,
 });
+
+export const setCurrentTable = (tableObj: {}): ReduxAction => ({
+  type: 'SET_CURRENT_TABLE',
+  payload: tableObj,
+});

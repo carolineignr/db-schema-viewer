@@ -1,0 +1,76 @@
+.infosTable {
+  &__container {
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    text-align: center;
+    font-size: .9rem;
+    margin: 1rem 3rem;
+    border-bottom: .5px solid rgba(255, 255, 255, 0.7);
+  }
+  
+  div {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  span {
+    color: #58408d;
+    opacity: .6;
+  }
+
+  .tags__div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  p {
+    margin: 1rem auto;
+    font-size: 1.2rem;
+  }
+
+  //  ---- Old cards divisors -----
+  //  
+  // div:not(:last-child) {
+  //   border-right: 1px solid white;
+  //   padding-right: 1.5rem;
+  // }
+
+  // div:not(:first-child) {
+  //   padding-left: 1.5rem;
+  // }
+  // 
+  // ------------------------------
+}
+
+.infosColumns {
+  &__header {
+    padding: 2rem;
+    justify-items: center;
+    border-bottom: .5px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem 3rem;
+    font-size: 1.2rem;
+    color: rgb(88, 64, 141);
+  }
+
+  &__container {
+    padding: .5rem 2rem;
+    color: white;
+    justify-items: center;
+
+    p {
+      padding: 1rem;
+    }
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+  
+  &__container, &__header {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    column-gap: 1.5rem;
+  }
+}
