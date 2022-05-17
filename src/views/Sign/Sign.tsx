@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import SignIllustration from '../../assets/images/db-person.png';
 import Form from '../../components/Form/Form';
-import { setDatabaseModal } from '../../store/actions/schemaActions';
+import { clearSchemas, setDatabaseModal } from '../../store/actions/schemaActions';
 import { ReduxState } from '../../utils/types';
 
 import styles from './Sign.module.scss';
@@ -16,8 +16,9 @@ const Sign = (): ReactElement => {
   );
 
   useEffect(() => {
+    dispatch(clearSchemas());
     Modal.setAppElement('#root');
-  }, []);
+  }, [dispatch]);
 
   function openDatabaseModal(): void {
     dispatch(setDatabaseModal(true));

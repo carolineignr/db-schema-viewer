@@ -3,15 +3,12 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
 
 import { OrbitControls } from '@react-three/drei';
 import { Table as TableInfos } from '../Table/Table';
 import Form from '../../components/Form/Form';
 import Table from '../../components/DatabaseSchema/Table/Table';
 import { Header } from '../../components/Header/Header';
-import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { ReduxState, TableState } from '../../utils/types';
 import {
   setCurrentTable,
@@ -56,7 +53,7 @@ export const Home = (): React.ReactElement => {
     }
 
     Modal.setAppElement('#root');
-  }, [schemas, navigate]);
+  }, [schemas, navigate, dispatch]);
 
   return (
     <>
@@ -67,30 +64,10 @@ export const Home = (): React.ReactElement => {
       >
         <div className={styles.modal_container}>
           <Form />
-          <button type="button" onClick={handleCloseDatabaseModal}>
-            Cancelar
-          </button>
         </div>
       </Modal>
 
       {schemas.length > 0 && <Header />}
-
-      {/* <Carousel
-        autoPlay={false}
-        selectedItem={this.state.currentSlide}
-        onChange={this.updateCurrentSlide}
-        {...this.props}
-      >
-
-      </Carousel>
-      <div>
-        <button onClick={this.prev} style={buttonStyle}>
-          Prev
-        </button>
-        <button onClick={this.next} style={buttonStyle}>
-          Next
-        </button>
-      </div> */}
 
       <section className={styles.wrapper}>
         {currentTable ? (

@@ -28,6 +28,11 @@ export const schemaReducer = (
         ...state,
         currentTable: action.payload,
       };
+    case 'CLEAR_SCHEMAS':
+      return {
+        ...state,
+        schemas: [],
+      };
     default:
       return state;
   }

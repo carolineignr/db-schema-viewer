@@ -12,7 +12,7 @@ import styles from './Header.module.scss';
 export const Header = (): React.ReactElement => {
   const dispatch = useDispatch();
   const currentTable = useSelector((state: ReduxState) => state.currentTable);
-  const currentSchema = useSelector((state: ReduxState) => state.schemas[0]);
+  const schemas = useSelector((state: ReduxState) => state.schemas);
 
   function handleBackButton(): void {
     dispatch(setCurrentTable(null));
@@ -27,7 +27,6 @@ export const Header = (): React.ReactElement => {
       <>
         <div>
           <span>Table name</span>
-          <p>{currentTable.name}</p>
         </div>
 
         <button
@@ -46,25 +45,32 @@ export const Header = (): React.ReactElement => {
       <>
         <div>
           <span>Database name</span>
-          <p>{currentSchema.tables[0].columns[0].rawInfo.table_catalog}</p>
+          <p>{schemas[0].tables[0].columns[0].rawInfo.table_catalog}</p>
         </div>
 
-        <button
-          type="button"
-          onClick={openDatabaseModal}
-          className={styles.back__button}
-        >
-          + Add a new database
-        </button>
+        {schemas.length < 2 && (
+          <button
+            type="button"
+            onClick={openDatabaseModal}
+            className={styles.back__button}
+          >
+            New database
+          </button>
+        )}
       </>
     );
   }
 
   return (
-    <header className={styles.header}>
-      <nav className={styles.nav}>
-        {currentTable ? renderTableInfoHeader() : renderDatabaseSchemaHeader()}
-      </nav>
-    </header>
+    <>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
+          {currentTable
+            ? renderTableInfoHeader()
+            : renderDatabaseSchemaHeader()}
+        </nav>
+      </header>
+      <p>{currentTable && currentTable.name}</p>
+    </>
   );
 };

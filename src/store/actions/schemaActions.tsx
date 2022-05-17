@@ -21,3 +21,5 @@ export const setCurrentTable = (tableObj: {}): ReduxAction => ({
   type: 'SET_CURRENT_TABLE',
   payload: tableObj,
 });
+
+export const clearSchemas = (): ReduxAction => ({ type: 'CLEAR_SCHEMAS' });
