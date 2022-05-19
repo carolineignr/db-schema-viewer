@@ -1,3 +1,7 @@
+* {
+  letter-spacing: .1rem;
+}
+
 .infosTable {
   &__container {
     display: flex;
@@ -5,7 +9,8 @@
     justify-content: space-between;
     text-align: center;
     font-size: .9rem;
-    margin: 1rem 3rem;
+    margin: 1rem 4.5rem;
+    padding: 0 2rem 3rem 2rem;
     border-bottom: .5px solid rgba(255, 255, 255, 0.7);
   }
   
@@ -15,8 +20,8 @@
   }
 
   span {
-    color: #58408d;
-    opacity: .6;
+    letter-spacing: .2rem;
+    opacity: .5;
   }
 
   .tags__div {
@@ -24,9 +29,10 @@
     flex-wrap: wrap;
   }
 
-  p {
+  & > p {
     margin: 1rem auto;
     font-size: 1.2rem;
+    color: #FFA229;
   }
 
   //  ---- Old cards divisors -----
@@ -43,14 +49,26 @@
   // ------------------------------
 }
 
+.section__title {
+  margin-left: 5.5rem;
+  opacity: .3;
+  letter-spacing: .2rem;
+}
+
 .infosColumns {
+  margin-bottom: 2rem;
+
   &__header {
     padding: 2rem;
     justify-items: center;
     border-bottom: .5px solid rgba(255, 255, 255, 0.1);
-    margin: 1rem 3rem;
+    margin: 0 3rem;
     font-size: 1.2rem;
-    color: rgb(88, 64, 141);
+    
+    span {
+      color: #E8701A;
+      opacity: .9;
+    }
   }
 
   &__container {
@@ -58,13 +76,40 @@
     color: white;
     justify-items: center;
 
+    .name {
+      color: #FFA229;
+      letter-spacing: .2rem;
+    }
+
     p {
       padding: 1rem;
     }
 
+    span {
+      opacity: 1;
+
+      span {
+        color: #FFA229;
+      }
+    }
+
     &:hover {
-      background-color: white;
+      background-color: #FFA229;
       color: black;
+      font-size: 1.8rem;
+
+      span {
+        color: black;
+        span {
+          color: white;
+          font-size: 1.3rem;
+        }
+      }
+
+      .name {
+        color: white;
+        font-size: 2rem;
+      }
     }
   }
   

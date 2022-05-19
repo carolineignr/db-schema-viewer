@@ -23,3 +23,8 @@ export const setCurrentTable = (tableObj: {}): ReduxAction => ({
 });
 
 export const clearSchemas = (): ReduxAction => ({ type: 'CLEAR_SCHEMAS' });
+
+export const setCurrentSlide = (slideIndex: number): ReduxAction => ({
+  type: 'SET_CURRENT_SLIDE',
+  payload: slideIndex,
+});

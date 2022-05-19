@@ -33,6 +33,11 @@ export const schemaReducer = (
         ...state,
         schemas: [],
       };
+    case 'SET_CURRENT_SLIDE':
+      return {
+        ...state,
+        currentSlide: null,
+      };
     default:
       return state;
   }

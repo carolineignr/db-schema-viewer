@@ -27,6 +27,7 @@ export const Header = (): React.ReactElement => {
       <>
         <div>
           <span>Table name</span>
+          <p>{currentTable.name}</p>
         </div>
 
         <button

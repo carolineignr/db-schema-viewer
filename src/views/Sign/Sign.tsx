@@ -49,7 +49,7 @@ const Sign = (): ReactElement => {
         </div>
 
         <div className={styles.app_details__container}>
-          <h2 className={styles.app_details__title}>What is that app</h2>
+          <h2 className={styles.app_details__title}>What is that</h2>
           <p className={styles.app_details__text}>
             Viewer to help you to understand better heterogeneous schemas
           </p>

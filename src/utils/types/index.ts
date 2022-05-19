@@ -16,6 +16,7 @@ export type ReduxState = {
   loading: boolean;
   databaseModalOpen: boolean;
   currentTable: TableState;
+  currentSlide: number;
 };
 
 export type SchemaState = {

@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Table from '../DatabaseSchema/Table/Table';
 
 class ExternalControlledCarousel extends Component<
   {},
@@ -48,11 +49,21 @@ export const CustomizedSlider = (customizedProps: any): React.ReactElement => {
   const containerStyle = { margin: '5px 0 20px' };
   const externalCarousel = new ExternalControlledCarousel([]);
   const { props } = externalCarousel;
-  const { children } = customizedProps;
+  const { schemas } = customizedProps;
+
+  function renderTables(identifier: number): any {
+    let xPosition = -5;
+    return schemas[identifier].tables.map((table) => (
+      <Table position={[xPosition++, 1, -2]} table={table} key={table.name} />
+    ));
+  }
+
+  useEffect(() => console.log(schemas), [schemas]);
 
   return (
     <div>
-      <div style={containerStyle}>
+      {renderTables(0)}
+      {/* <div style={containerStyle}>
         <p style={containerStyle}>
           Use the buttons above to change the selected schema visualization
         </p>
@@ -78,9 +89,9 @@ export const CustomizedSlider = (customizedProps: any): React.ReactElement => {
           onChange={externalCarousel.updateCurrentSlide}
           {...props}
         >
-          {children}
+          {children.map((schema: any) => schema)}
         </Carousel>
-      </div>
+      </div> */}
     </div>
   );
 };

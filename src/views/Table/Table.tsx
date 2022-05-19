@@ -22,9 +22,22 @@ export const Table = (props: any): React.ReactElement => {
     return relations;
   }
 
+  function renderColumnsReference(column): React.ReactElement {
+    console.log(column);
+    return (
+      <span>
+        Is a reference of table <span>{column.reference.table}</span>, column{' '}
+        <span>{column.reference.column}</span>
+      </span>
+    );
+  }
+
   function renderColumnsInfos(): React.ReactElement {
     return (
       <div>
+        <span className={styles.section__title}>
+          What we know about this table columns
+        </span>
         <div className={styles.infosColumns__header}>
           <span>Respective column name</span>
           <span>Is primary key</span>
@@ -37,10 +50,10 @@ export const Table = (props: any): React.ReactElement => {
           <span>Is foreign key</span>
         </div>
 
-        <div>
+        <div className={styles.infosColumns}>
           {props.table.columns.map((column) => (
             <div className={styles.infosColumns__container}>
-              <p>{column.name || 'Not informed'}</p>
+              <p className={styles.name}>{column.name || 'Not informed'}</p>
               <p>{column.isPrimary ? 'Yes' : 'No'}</p>
               <p>{column.maxLength || 'Not defined'}</p>
               <p>{column.nullable ? 'Yes' : 'No'}</p>
@@ -50,11 +63,7 @@ export const Table = (props: any): React.ReactElement => {
               <p>{column.type || 'Not informed'}</p>
               <p>{column.isUpdatable ? 'Yes' : 'No'}</p>
               <p>{column.isIdentity ? 'Yes' : 'No'}</p>
-              <p>
-                {column.reference
-                  ? `Is a reference of table ${column.reference.table}, column ${column.reference.column}`
-                  : 'No'}
-              </p>
+              <p>{column.reference ? renderColumnsReference(column) : 'No'}</p>
             </div>
           ))}
         </div>
@@ -64,23 +73,32 @@ export const Table = (props: any): React.ReactElement => {
 
   return (
     <>
+      <span className={styles.section__title}>
+        What we know about this table
+      </span>
       <div className={styles.infosTable__container}>
         <div>
           <span>Total number of columns</span>
-          <p>{props.table.columns.length}</p>
+          <p style={{ fontSize: '3rem', color: '#FFA229' }}>
+            {props.table.columns.length}
+          </p>
         </div>
         <div>
           <span>Comments</span>
-          <p>{props.table.comment || 'No comments'}</p>
+          <p style={{ color: '#FFA229' }}>
+            {props.table.comment || 'No comments'}
+          </p>
         </div>
         <div>
           <span>Tags</span>
           {/* renderizar as tags dentro de 'mini cards' */}
-          <p>{hasTags ? renderTags() : 'No tags'}</p>
+          <p style={{ color: '#FFA229' }}>
+            {hasTags ? renderTags() : 'No tags'}
+          </p>
         </div>
         <div>
           <span>How many tables does it relate to</span>
-          <p>{relationWith()}</p>
+          <p style={{ fontSize: '3rem', color: '#FFA229' }}>{relationWith()}</p>
         </div>
       </div>
 
