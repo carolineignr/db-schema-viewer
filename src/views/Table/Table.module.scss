@@ -79,6 +79,7 @@
     .name {
       color: #FFA229;
       letter-spacing: .2rem;
+      font-size: 1.2rem;
     }
 
     p {
@@ -94,12 +95,17 @@
     }
 
     &:hover {
-      background-color: #FFA229;
+      background-color: #E8701A;
       color: black;
       font-size: 1.8rem;
 
+      p {
+        color: black;
+      }
+
       span {
         color: black;
+        
         span {
           color: white;
           font-size: 1.3rem;
