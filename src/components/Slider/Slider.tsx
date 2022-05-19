@@ -6,10 +6,12 @@ import React, { Component, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './Slider.module.scss';
 import Table from '../DatabaseSchema/Table/Table';
 import { Table as TableInfos } from '../../views/Table/Table';
 import { ReduxState } from '../../utils/types';
 import { setCurrentSlide } from '../../store/actions/schemaActions';
+import { Header } from '../Header/Header';
 
 class ExternalControlledCarousel extends Component<
   {},
@@ -51,15 +53,34 @@ export const Slider = (customizedProps: any): React.ReactElement => {
   const { props } = externalCarousel;
   const { schemas, onClick, currentTable } = customizedProps;
 
-  function renderTables(identifier: number): any {
+  function renderTables(schema): React.ReactElement {
     let xPosition = -5;
-    return schemas[identifier].tables.map((table) => (
+    return schema.tables.map((table) => (
       <Table
         position={[xPosition++, 1, -2]}
         table={table}
         key={table.name}
         onClick={() => onClick(table)}
       />
+    ));
+  }
+
+  function renderSchemas(): any {
+    return schemas.map((schema) => (
+      <div className={styles.schema__container}>
+        <Header />
+        <Canvas>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <OrbitControls
+            addEventListener={undefined}
+            hasEventListener={undefined}
+            removeEventListener={undefined}
+            dispatchEvent={undefined}
+          />
+          {renderTables(schema)}
+        </Canvas>
+      </div>
     ));
   }
 
@@ -79,23 +100,7 @@ export const Slider = (customizedProps: any): React.ReactElement => {
 
   return (
     <div>
-      {currentTable ? (
-        <TableInfos table={currentTable} />
-      ) : (
-        <>
-          <Canvas>
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            <OrbitControls
-              addEventListener={undefined}
-              hasEventListener={undefined}
-              removeEventListener={undefined}
-              dispatchEvent={undefined}
-            />
-            {renderTables(0)}
-          </Canvas>
-        </>
-      )}
+      {currentTable ? <TableInfos table={currentTable} /> : renderSchemas()}
       {/* <div style={containerStyle}>
         <br />
         <Carousel

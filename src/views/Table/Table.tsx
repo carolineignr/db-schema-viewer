@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from 'react';
+import { Header } from '../../components/Header/Header';
 import { TableState } from '../../utils/types';
 import styles from './Table.module.scss';
 
@@ -73,6 +74,7 @@ export const Table = (props: any): React.ReactElement => {
 
   return (
     <>
+      <Header />
       <span className={styles.section__title}>
         What we know about this table
       </span>

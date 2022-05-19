@@ -17,14 +17,16 @@ button {
 	color: #fff;
 	padding: 1rem;
 	margin: 0 auto;
-	border: 1px solid #fff;
+	border: 1px solid #EAA954;
 	border-radius: .2rem;
 	cursor: pointer;
+	opacity: .5;
 
 	&:hover {
 		background-color: #EAA954;
 		border-color: #EAA954;
 		color: #fff;
+		opacity: 1;
 	}
 }
 

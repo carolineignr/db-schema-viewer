@@ -71,7 +71,6 @@ export const Header = (): React.ReactElement => {
             : renderDatabaseSchemaHeader()}
         </nav>
       </header>
-      <p>{currentTable && currentTable.name}</p>
     </>
   );
 };
