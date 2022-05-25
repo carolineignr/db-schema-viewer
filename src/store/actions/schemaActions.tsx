@@ -1,4 +1,8 @@
-import { ReduxAction, DatabaseInputParams } from '../../utils/types';
+import {
+  ReduxAction,
+  DatabaseInputParams,
+  TableState,
+} from '../../utils/types';
 
 export const setSchema = (schemaObj: {}): ReduxAction => ({
   type: 'SET_SCHEMA',
@@ -24,7 +28,7 @@ export const setCurrentTable = (tableObj: {}): ReduxAction => ({
 
 export const clearSchemas = (): ReduxAction => ({ type: 'CLEAR_SCHEMAS' });
 
-export const setCurrentSlide = (slideIndex: number): ReduxAction => ({
-  type: 'SET_CURRENT_SLIDE',
-  payload: slideIndex,
+export const setSelectedTables = (tables: Array<TableState>): ReduxAction => ({
+  type: 'SET_SELECTED_TABLES',
+  payload: tables,
 });

@@ -33,10 +33,10 @@ export const schemaReducer = (
         ...state,
         schemas: [],
       };
-    case 'SET_CURRENT_SLIDE':
+    case 'SET_SELECTED_TABLES':
       return {
         ...state,
-        currentSlide: null,
+        selectedTables: action.payload,
       };
     default:
       return state;

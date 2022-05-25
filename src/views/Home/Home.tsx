@@ -1,14 +1,15 @@
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Form from '../../components/Form/Form';
-import Slider from '../../components/Slider/Slider';
+import Container from '../../components/Container/Container';
 import { ReduxState, TableState } from '../../utils/types';
 import {
-  setCurrentTable,
   setDatabaseModal,
+  setSelectedTables,
 } from '../../store/actions/schemaActions';
 
 import styles from './Home.module.scss';
@@ -16,23 +17,51 @@ import styles from './Home.module.scss';
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const schemas = useSelector((state: ReduxState) => state.schemas);
-  // const currentSchema = useSelector((state: ReduxState) => state.currentSchema);
-  const isModalOpen = useSelector(
-    (state: ReduxState) => state.databaseModalOpen,
-  );
-  const currentTable = useSelector((state: ReduxState) => state.currentTable);
+  const currentState = useSelector((state: ReduxState) => state);
+  const { selectedTables, databaseModalOpen } = currentState;
+  const isModalOpen = databaseModalOpen;
 
   function handleCloseDatabaseModal(): void {
     dispatch(setDatabaseModal(false));
   }
 
-  function onClickTable(table: TableState): void {
-    dispatch(setCurrentTable(table));
+  function objectAlreadyIn(clickedTable): any {
+    return selectedTables.find(
+      (table) => JSON.stringify(table) === JSON.stringify(clickedTable),
+    );
   }
 
-  function renderGeneralHeader(): React.ReactElement {
-    if (!currentTable) {
+  function removeObjFromSelectedTables(clickedTable: TableState): boolean {
+    try {
+      const updatedArr = selectedTables.filter(
+        (table) => JSON.stringify(table) === JSON.stringify(clickedTable),
+      );
+      dispatch(setSelectedTables(updatedArr));
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+
+  function onClickTable(table: TableState): any {
+    if (currentState.selectedTables.length <= 2) {
+      if (objectAlreadyIn(table)) {
+        removeObjFromSelectedTables(table);
+        console.log('These table is already selected');
+      } else {
+        selectedTables.push(table);
+        dispatch(setSelectedTables(selectedTables));
+      }
+    } else {
+      console.log('Already have two tables');
+    }
+  }
+
+  function renderGenericHeader(): React.ReactElement {
+    if (selectedTables.length < 2) {
       return (
         <div className={styles.general_header__container}>
           <p>Available database schemas</p>
@@ -68,14 +97,14 @@ export const Home = (): React.ReactElement => {
         </div>
       </Modal>
 
-      {schemas.length > 0 && renderGeneralHeader()}
+      {schemas.length > 0 && renderGenericHeader()}
 
       <section className={styles.wrapper}>
         <>
-          <Slider
+          <Container
             schemas={schemas}
+            selectedTables={selectedTables}
             onClick={onClickTable}
-            currentTable={currentTable}
           />
           <button type="button" onClick={() => navigate(-1)}>
             Go back

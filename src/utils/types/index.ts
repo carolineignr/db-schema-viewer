@@ -16,7 +16,7 @@ export type ReduxState = {
   loading: boolean;
   databaseModalOpen: boolean;
   currentTable: TableState;
-  currentSlide: number;
+  selectedTables: TableState[];
 };
 
 export type SchemaState = {
@@ -41,7 +41,7 @@ export type InputProp = {
 
 export type TableState = {
   columns: any;
-  name: any;
+  name: string;
   tags: any;
 };
 

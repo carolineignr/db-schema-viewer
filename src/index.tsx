@@ -19,6 +19,7 @@ const initialState = {
   },
   loading: false,
   databaseModalOpen: false,
+  selectedTables: [],
 };
 const store = createStore(schemaReducer, initialState, composeWithDevTools());
 

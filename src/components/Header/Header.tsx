@@ -2,32 +2,34 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setCurrentTable,
   setDatabaseModal,
+  setSelectedTables,
 } from '../../store/actions/schemaActions';
-import { ReduxState } from '../../utils/types';
+import { ReduxState, TableState } from '../../utils/types';
 
 import styles from './Header.module.scss';
 
-export const Header = (): React.ReactElement => {
+export const Header = ({ schema }: any): React.ReactElement => {
   const dispatch = useDispatch();
-  const currentTable = useSelector((state: ReduxState) => state.currentTable);
+  const selectedTables = useSelector(
+    (state: ReduxState) => state.selectedTables,
+  );
   const schemas = useSelector((state: ReduxState) => state.schemas);
 
   function handleBackButton(): void {
-    dispatch(setCurrentTable(null));
+    dispatch(setSelectedTables([]));
   }
 
   function openDatabaseModal(): void {
     dispatch(setDatabaseModal(true));
   }
 
-  function renderTableInfoHeader(): React.ReactElement {
+  function renderTableInfoHeader(table: TableState): React.ReactElement {
     return (
       <>
         <div>
           <span>Table name</span>
-          <p>{currentTable.name}</p>
+          <p>{table.name}</p>
         </div>
 
         <button
@@ -46,9 +48,9 @@ export const Header = (): React.ReactElement => {
       <>
         <div>
           <span>Database name</span>
-          <p>{schemas[0].tables[0].columns[0].rawInfo.table_catalog}</p>
+          <p>{schema.tables[0].columns[0].rawInfo.table_catalog}</p>
+          <span>Total columns: {schema.tables.length}</span>
         </div>
-
         {schemas.length < 2 && (
           <button
             type="button"
@@ -66,8 +68,8 @@ export const Header = (): React.ReactElement => {
     <>
       <header className={styles.header}>
         <nav className={styles.nav}>
-          {currentTable
-            ? renderTableInfoHeader()
+          {selectedTables.length === 2
+            ? selectedTables.map((table) => renderTableInfoHeader(table))
             : renderDatabaseSchemaHeader()}
         </nav>
       </header>

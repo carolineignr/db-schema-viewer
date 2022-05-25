@@ -1,12 +1,11 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Header } from '../../components/Header/Header';
-import { TableState } from '../../utils/types';
 import styles from './Table.module.scss';
 
 // eslint-disable-next-line react/prop-types
 export const Table = (props: any): React.ReactElement => {
-  const hasTags = Object.keys(props.table.tags).length > 0;
+  // const hasTags = Object.keys(props.table.tags).length > 0;
 
   function renderTags(): React.ReactElement {
     return props.table.tags.map((tag) => (
@@ -24,11 +23,9 @@ export const Table = (props: any): React.ReactElement => {
   }
 
   function renderColumnsReference(column): React.ReactElement {
-    console.log(column);
     return (
       <span>
-        Is a reference of table <span>{column.reference.table}</span>, column{' '}
-        <span>{column.reference.column}</span>
+        {column.reference.table} ({column.reference.column})
       </span>
     );
   }
@@ -58,9 +55,7 @@ export const Table = (props: any): React.ReactElement => {
               <p>{column.isPrimary ? 'Yes' : 'No'}</p>
               <p>{column.maxLength || 'Not defined'}</p>
               <p>{column.nullable ? 'Yes' : 'No'}</p>
-              <p>
-                {column.defaultValue || 'There is not a default value defined'}
-              </p>
+              <p>{column.defaultValue || 'Not defined'}</p>
               <p>{column.type || 'Not informed'}</p>
               <p>{column.isUpdatable ? 'Yes' : 'No'}</p>
               <p>{column.isIdentity ? 'Yes' : 'No'}</p>
@@ -75,7 +70,7 @@ export const Table = (props: any): React.ReactElement => {
   return (
     <>
       <Header />
-      <span className={styles.section__title}>
+      {/* <span className={styles.section__title}>
         What we know about this table
       </span>
       <div className={styles.infosTable__container}>
@@ -93,7 +88,7 @@ export const Table = (props: any): React.ReactElement => {
         </div>
         <div>
           <span>Tags</span>
-          {/* renderizar as tags dentro de 'mini cards' */}
+          / renderizar as tags dentro de 'mini cards' /
           <p style={{ color: '#FFA229' }}>
             {hasTags ? renderTags() : 'No tags'}
           </p>
@@ -104,7 +99,7 @@ export const Table = (props: any): React.ReactElement => {
         </div>
       </div>
 
-      {renderColumnsInfos()}
+      {renderColumnsInfos()} */}
     </>
   );
 };
