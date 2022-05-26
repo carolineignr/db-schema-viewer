@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -11,10 +11,9 @@ import styles from './Header.module.scss';
 
 export const Header = ({ schema }: any): React.ReactElement => {
   const dispatch = useDispatch();
-  const selectedTables = useSelector(
-    (state: ReduxState) => state.selectedTables,
-  );
-  const schemas = useSelector((state: ReduxState) => state.schemas);
+
+  const currentState = useSelector((state: ReduxState) => state);
+  const { selectedTables, schemas } = currentState;
 
   function handleBackButton(): void {
     dispatch(setSelectedTables([]));

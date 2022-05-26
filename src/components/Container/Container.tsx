@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import styles from './Container.module.scss';
-import Table from '../DatabaseSchema/Table/Table';
+
 import { Table as TableInfos } from '../../views/Table/Table';
 import { Header } from '../Header/Header';
+import Table from '../DatabaseSchema/Table/Table';
+
+import styles from './Container.module.scss';
 
 export const Container = (customizedProps: any): React.ReactElement => {
-  const dispatch = useDispatch();
   const { schemas, onClick, selectedTables } = customizedProps;
 
   function renderTables(schema): React.ReactElement {

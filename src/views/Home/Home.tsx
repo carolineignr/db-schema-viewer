@@ -50,12 +50,14 @@ export const Home = (): React.ReactElement => {
     if (currentState.selectedTables.length <= 2) {
       if (objectAlreadyIn(table)) {
         removeObjFromSelectedTables(table);
+        // Mostrar erro para o usuário
         console.log('These table is already selected');
       } else {
         selectedTables.push(table);
         dispatch(setSelectedTables(selectedTables));
       }
     } else {
+      // Mostrar erro para o usuário
       console.log('Already have two tables');
     }
   }
@@ -86,7 +88,7 @@ export const Home = (): React.ReactElement => {
   }, [schemas, navigate]);
 
   return (
-    <>
+    <div>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={handleCloseDatabaseModal}
@@ -111,7 +113,7 @@ export const Home = (): React.ReactElement => {
           </button>
         </>
       </section>
-    </>
+    </div>
   );
 };
 

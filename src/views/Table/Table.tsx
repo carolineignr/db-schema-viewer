@@ -1,9 +1,9 @@
 /* eslint-disable react/destructuring-assignment */
+// eslint-disable react/prop-types
 import React from 'react';
 import { Header } from '../../components/Header/Header';
 import styles from './Table.module.scss';
 
-// eslint-disable-next-line react/prop-types
 export const Table = (props: any): React.ReactElement => {
   // const hasTags = Object.keys(props.table.tags).length > 0;
 
