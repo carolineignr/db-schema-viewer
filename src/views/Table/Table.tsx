@@ -69,7 +69,7 @@ export const Table = (props: any): React.ReactElement => {
 
   return (
     <>
-      <Header />
+      <Header currentTable={props.table} />
       {/* <span className={styles.section__title}>
         What we know about this table
       </span>

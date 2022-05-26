@@ -5,6 +5,7 @@ import { Canvas } from '@react-three/fiber';
 
 import { Table as TableInfos } from '../../views/Table/Table';
 import { Header } from '../Header/Header';
+import Tabs from '../Tabs/Tabs';
 import Table from '../DatabaseSchema/Table/Table';
 
 import styles from './Container.module.scss';
@@ -43,15 +44,7 @@ export const Container = (customizedProps: any): React.ReactElement => {
     ));
   }
 
-  return (
-    <div>
-      {selectedTables.length === 2 ? (
-        <TableInfos selectedTables={selectedTables} />
-      ) : (
-        renderSchemas()
-      )}
-    </div>
-  );
+  return <div>{selectedTables.length === 2 ? <Tabs /> : renderSchemas()}</div>;
 };
 
 export default Container;

@@ -9,11 +9,10 @@ import { ReduxState, TableState } from '../../utils/types';
 
 import styles from './Header.module.scss';
 
-export const Header = ({ schema }: any): React.ReactElement => {
+export const Header = ({ schema, currentTable }: any): React.ReactElement => {
   const dispatch = useDispatch();
-
   const currentState = useSelector((state: ReduxState) => state);
-  const { selectedTables, schemas } = currentState;
+  const { schemas } = currentState;
 
   function handleBackButton(): void {
     dispatch(setSelectedTables([]));
@@ -67,8 +66,8 @@ export const Header = ({ schema }: any): React.ReactElement => {
     <>
       <header className={styles.header}>
         <nav className={styles.nav}>
-          {selectedTables.length === 2
-            ? selectedTables.map((table) => renderTableInfoHeader(table))
+          {!schema
+            ? renderTableInfoHeader(currentTable)
             : renderDatabaseSchemaHeader()}
         </nav>
       </header>
