@@ -5,7 +5,7 @@ import { Header } from '../../components/Header/Header';
 import styles from './Table.module.scss';
 
 export const Table = (props: any): React.ReactElement => {
-  // const hasTags = Object.keys(props.table.tags).length > 0;
+  const hasTags = Object.keys(props.table.tags).length > 0;
 
   function renderTags(): React.ReactElement {
     return props.table.tags.map((tag) => (
@@ -70,7 +70,7 @@ export const Table = (props: any): React.ReactElement => {
   return (
     <>
       <Header currentTable={props.table} />
-      {/* <span className={styles.section__title}>
+      <span className={styles.section__title}>
         What we know about this table
       </span>
       <div className={styles.infosTable__container}>
@@ -88,7 +88,7 @@ export const Table = (props: any): React.ReactElement => {
         </div>
         <div>
           <span>Tags</span>
-          / renderizar as tags dentro de 'mini cards' /
+          {/* renderizar as tags dentro de 'mini cards' */}
           <p style={{ color: '#FFA229' }}>
             {hasTags ? renderTags() : 'No tags'}
           </p>
@@ -99,7 +99,7 @@ export const Table = (props: any): React.ReactElement => {
         </div>
       </div>
 
-      {renderColumnsInfos()} */}
+      {renderColumnsInfos()}
     </>
   );
 };

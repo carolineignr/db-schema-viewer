@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import Modal from 'react-modal';
@@ -5,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Form from '../../components/Form/Form';
-import Container from '../../components/Container/Container';
+import Container from '../../components/Container/Container.jsx';
 import { ReduxState, TableState } from '../../utils/types';
 import {
   setDatabaseModal,
@@ -62,7 +63,7 @@ export const Home = (): React.ReactElement => {
     }
   }
 
-  function renderGenericHeader(): React.ReactElement {
+  function renderGenericHeader(): React.ReactElement | any {
     if (selectedTables.length < 2) {
       return (
         <div className={styles.general_header__container}>
@@ -71,12 +72,7 @@ export const Home = (): React.ReactElement => {
       );
     }
 
-    return (
-      <div className={styles.general_header__container}>
-        <span>Current schema name</span>
-        <span className={styles.name}>Schema name</span>
-      </div>
-    );
+    return '';
   }
 
   useEffect(() => {
@@ -109,7 +105,7 @@ export const Home = (): React.ReactElement => {
             onClick={onClickTable}
           />
           <button type="button" onClick={() => navigate(-1)}>
-            Go back
+            Exit
           </button>
         </>
       </section>

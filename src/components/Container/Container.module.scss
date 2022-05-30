@@ -2,5 +2,10 @@
   &__container {
     border: 1px solid white;
     margin: 2rem;
+    border-radius: 2%;
+
+    div > canvas {
+      height: 400px;
+    }
   }
 }

@@ -52,7 +52,6 @@ const Tabs = (): React.ReactElement => {
           <div id={`content-tab-${tab.id}`}>
             {currentTab === `${tab.id}` && (
               <div>
-                <p className={styles.title}>{tab.title}</p>
                 <p>{tab.content}</p>
               </div>
             )}
