@@ -43,6 +43,7 @@ export const Container = (customizedProps) => {
             size={[40, 10, 10]}
           >
             {renderTables(schema)}
+            {/* Teste com múltiplas tabelas */}
             {/* {renderTables(schema)}
             {renderTables(schema)}
             {renderTables(schema)}

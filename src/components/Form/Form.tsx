@@ -67,39 +67,47 @@ const Form = (): ReactElement => {
   return (
     <section className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <span>Database informations to access</span> <br />
-        <span>Host name</span>
-        <input
-          className={styles.formInput}
-          name="host"
-          value={inputParams.host}
-          onChange={(e) => updateValue(e)}
-        />
-        <span>Database name</span>
-        <input
-          className={styles.formInput}
-          name="database"
-          value={inputParams.database}
-          onChange={(e) => updateValue(e)}
-        />
-        <span>Username to access database</span>
-        <input
-          className={styles.formInput}
-          name="user"
-          value={inputParams.user}
-          onChange={(e) => updateValue(e)}
-        />
-        <span>Password to access database</span>
-        <input
-          className={styles.formInput}
-          name="password"
-          value={inputParams.password}
-          onChange={(e) => updateValue(e)}
-          type="password"
-        />
+        <p>Database information&apos;s to access</p>
+        <label htmlFor="host">
+          Host name
+          <input
+            className={styles.formInput}
+            name="host"
+            value={inputParams.host}
+            onChange={(e) => updateValue(e)}
+          />
+        </label>
+        <label htmlFor="database">
+          Database name
+          <input
+            className={styles.formInput}
+            name="database"
+            value={inputParams.database}
+            onChange={(e) => updateValue(e)}
+          />
+        </label>
+        <label htmlFor="user">
+          Username to access database
+          <input
+            className={styles.formInput}
+            name="user"
+            value={inputParams.user}
+            onChange={(e) => updateValue(e)}
+          />
+        </label>
+        <label htmlFor="password">
+          Password to access database
+          <input
+            className={styles.formInput}
+            name="password"
+            value={inputParams.password}
+            onChange={(e) => updateValue(e)}
+            type="password"
+          />
+        </label>
         <button type="submit">Submit</button>
         <button type="button" onClick={handleCloseDatabaseModal}>
-          Cancelar
+          Cancel
         </button>
       </form>
     </section>
