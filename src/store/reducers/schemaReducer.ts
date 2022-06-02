@@ -38,6 +38,11 @@ export const schemaReducer = (
         ...state,
         selectedTables: action.payload,
       };
+    case 'SET_TIPS_MODAL':
+      return {
+        ...state,
+        tipsModalOpen: action.payload,
+      };
     default:
       return state;
   }

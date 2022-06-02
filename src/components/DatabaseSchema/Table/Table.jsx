@@ -1,36 +1,38 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Box } from '@react-three/flex';
-import { Text } from '@react-three/drei';
+import { Html } from '@react-three/drei';
 
 export const Table = (props) => {
   const [active, setActive] = useState(false);
   const mesh = useRef();
   const rotation = 0.01;
-  const { onClick, table, position } = props;
+  const { onClick, table, position, textPosition } = props;
 
   useFrame(() => {
     mesh.current.rotation.x += rotation;
     mesh.current.rotation.y += rotation;
   });
 
-  function handleClick() {
+  function handleClick(e) {
+    console.log(e);
     setActive(!active);
-    onClick(table);
+    // onClick(table);
   }
 
   return (
     <>
-      <Box margin={1}>
+      <Box margin={3}>
         <mesh onClick={handleClick} ref={mesh} position={position}>
-          <boxBufferGeometry args={[1, 1, 0.2]} />
-          <meshStandardMaterial color={active ? 'orange' : 'white'} />
+          <boxBufferGeometry args={[1, 1, 0.3]} />
+          <meshToonMaterial color={active ? 'white' : 'black'} />
         </mesh>
+        <Html position={textPosition}>{table.name}</Html>
       </Box>
-      <Text color="white">hello world!</Text>
     </>
   );
 };

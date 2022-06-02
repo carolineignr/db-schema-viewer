@@ -11,6 +11,7 @@ import { ReduxState, TableState } from '../../utils/types';
 import {
   setDatabaseModal,
   setSelectedTables,
+  setTipsModal,
 } from '../../store/actions/schemaActions';
 
 import styles from './Home.module.scss';
@@ -21,7 +22,7 @@ export const Home = (): React.ReactElement => {
 
   const schemas = useSelector((state: ReduxState) => state.schemas);
   const currentState = useSelector((state: ReduxState) => state);
-  const { selectedTables, databaseModalOpen } = currentState;
+  const { selectedTables, databaseModalOpen, tipsModalOpen } = currentState;
   const isModalOpen = databaseModalOpen;
 
   function handleCloseDatabaseModal(): void {
@@ -63,16 +64,37 @@ export const Home = (): React.ReactElement => {
     }
   }
 
-  function renderGenericHeader(): React.ReactElement | any {
-    if (selectedTables.length < 2) {
-      return (
-        <div className={styles.general_header__container}>
-          <p>Available database schemas</p>
-        </div>
-      );
-    }
+  function showTipsModal(): void {
+    dispatch(setTipsModal(true));
+  }
 
-    return '';
+  function openDatabaseModal(): void {
+    dispatch(setDatabaseModal(true));
+  }
+
+  function closeTipsModal(): void {
+    dispatch(setTipsModal(false));
+  }
+
+  function renderGenericHeader(): React.ReactElement | any {
+    return (
+      <div className={styles.general_header__container}>
+        <p>Available database schemas</p>
+        <button type="button" onClick={showTipsModal}>
+          How to manipulate the scene
+        </button>
+        <div aria-label="action buttons">
+          {schemas.length < 2 && (
+            <button type="button" onClick={openDatabaseModal}>
+              New database
+            </button>
+          )}
+          <button type="button" onClick={() => navigate(-1)}>
+            Exit
+          </button>
+        </div>
+      </div>
+    );
   }
 
   useEffect(() => {
@@ -95,19 +117,36 @@ export const Home = (): React.ReactElement => {
         </div>
       </Modal>
 
+      <Modal
+        isOpen={tipsModalOpen}
+        onRequestClose={closeTipsModal}
+        className="modalCustomStyle"
+      >
+        <div className={styles.modal_container}>
+          <div>
+            <h1>How to move the camera</h1>
+            <span>Tips to move camera</span>
+
+            <h1>How to get closer to the 3D objects</h1>
+            <span>Tips to get closer</span>
+
+            <h1>How to change the visualization perspective</h1>
+            <span>Tips to update perspective</span>
+          </div>
+          <button type="button" onClick={closeTipsModal}>
+            Close
+          </button>
+        </div>
+      </Modal>
+
       {schemas.length > 0 && renderGenericHeader()}
 
       <section className={styles.wrapper}>
-        <>
-          <Container
-            schemas={schemas}
-            selectedTables={selectedTables}
-            onClick={onClickTable}
-          />
-          <button type="button" onClick={() => navigate(-1)}>
-            Exit
-          </button>
-        </>
+        <Container
+          schemas={schemas}
+          selectedTables={selectedTables}
+          onClick={onClickTable}
+        />
       </section>
     </div>
   );

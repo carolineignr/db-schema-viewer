@@ -18,10 +18,6 @@ export const Header = ({ schema, currentTable }: any): React.ReactElement => {
     dispatch(setSelectedTables([]));
   }
 
-  function openDatabaseModal(): void {
-    dispatch(setDatabaseModal(true));
-  }
-
   function renderTableInfoHeader(table: TableState): React.ReactElement {
     return (
       <>
@@ -29,14 +25,6 @@ export const Header = ({ schema, currentTable }: any): React.ReactElement => {
           <span>Table name</span>
           <p>{table.name}</p>
         </div>
-
-        <button
-          type="button"
-          onClick={handleBackButton}
-          className={styles.back__button}
-        >
-          Back to tables
-        </button>
       </>
     );
   }
@@ -49,28 +37,17 @@ export const Header = ({ schema, currentTable }: any): React.ReactElement => {
           <p>{schema.tables[0].columns[0].rawInfo.table_catalog}</p>
           <span>Total columns: {schema.tables.length}</span>
         </div>
-        {schemas.length < 2 && (
-          <button
-            type="button"
-            onClick={openDatabaseModal}
-            className={styles.back__button}
-          >
-            New database
-          </button>
-        )}
       </>
     );
   }
 
   return (
-    <>
-      <header className={styles.header}>
-        <nav className={styles.nav}>
-          {!schema
-            ? renderTableInfoHeader(currentTable)
-            : renderDatabaseSchemaHeader()}
-        </nav>
-      </header>
-    </>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        {!schema
+          ? renderTableInfoHeader(currentTable)
+          : renderDatabaseSchemaHeader()}
+      </nav>
+    </header>
   );
 };

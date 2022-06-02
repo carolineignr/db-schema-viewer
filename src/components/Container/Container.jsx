@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, OrthographicCamera } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Flex } from '@react-three/flex';
 
@@ -20,6 +20,7 @@ export const Container = (customizedProps) => {
     return schema.tables.map((table) => (
       <Table
         position={[-20, 5, -5]}
+        textPosition={[-20, 6, -5]}
         table={table}
         key={table.name}
         onClick={onClick}
@@ -35,6 +36,7 @@ export const Container = (customizedProps) => {
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <OrbitControls />
+          <OrthographicCamera makeDefault position={[50, 10, 10]} zoom={30} />
           <Flex
             justifyContent="center"
             alignItems="center"
@@ -54,8 +56,6 @@ export const Container = (customizedProps) => {
       </div>
     ));
   }
-
-  useEffect(() => console.log(selectedTables));
 
   return <div>{selectedTables.length === 2 ? <Tabs /> : renderSchemas()}</div>;
 };

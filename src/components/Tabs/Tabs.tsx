@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '../../utils/types';
 import Table from '../../views/Table/Table';

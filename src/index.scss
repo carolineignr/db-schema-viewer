@@ -5,23 +5,26 @@
   padding: 0;
   box-sizing: border-box;
 	font-family: 'Spline Sans Mono', monospace;
-	font-size: 1rem;
 	background-color: #fff;
+}
+
+.general__container {
+	height: 95vh;
 }
 
 button {
 	background: transparent;
 	color: #000;
 	padding: 1.5rem;
-	border: 1px solid #EAA954;
+	border: .5px solid #EAA954;
 	font-weight: 700;
 	cursor: pointer;
 	opacity: .8;
+	font-size: 1rem;
 
 	&:hover {
-		background-color: #EAA954;
-		border-color: #EAA954;
-		color: #fff;
+		background-color: #FFA229;
+		border: 1px solid #000;
 		opacity: 1;
 	}
 }
@@ -35,7 +38,6 @@ button {
 	overflow: auto;
 	outline: none;
 	min-width: 450px;
-	height: 70%;
 	min-height: 620px;
 	margin: 0 auto;
 	color: white;

@@ -15,6 +15,7 @@ export type ReduxState = {
   inputParams: DatabaseInputParams;
   loading: boolean;
   databaseModalOpen: boolean;
+  tipsModalOpen: boolean;
   currentTable: TableState;
   selectedTables: TableState[];
 };

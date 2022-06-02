@@ -1,11 +1,12 @@
 .schema {
   &__container {
-    border: 1px solid white;
-    margin: 2rem;
-    border-radius: 2%;
+    border: 1px solid #000000;
+    margin: 1rem auto;
+    width: 70%;
 
     div > canvas {
       height: 400px;
+      background-color: #706e6c57;
     }
   }
 }
