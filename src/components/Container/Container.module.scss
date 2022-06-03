@@ -3,6 +3,10 @@
     border: 1px solid #000000;
     margin: 1rem auto;
     width: 70%;
+    
+    div {
+      background: #fff;
+    }
 
     div > canvas {
       height: 400px;

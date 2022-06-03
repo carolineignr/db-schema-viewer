@@ -78,7 +78,7 @@ export const Home = (): React.ReactElement => {
 
   function renderGenericHeader(): React.ReactElement | any {
     return (
-      <div className={styles.general_header__container}>
+      <div className={styles.home_header__container}>
         <p>Available database schemas</p>
         <button type="button" onClick={showTipsModal}>
           How to manipulate the scene

@@ -37,7 +37,7 @@ export const Table = (props: any): React.ReactElement => {
           What we know about this table columns
         </span>
         <div className={styles.infosColumns__header}>
-          <span>Respective column name</span>
+          <span>Column name</span>
           <span>Is primary key</span>
           <span>Max num of characters</span>
           <span>Nullable</span>

@@ -16,6 +16,7 @@ export type ReduxState = {
   loading: boolean;
   databaseModalOpen: boolean;
   tipsModalOpen: boolean;
+  toolDetailsOpen: boolean;
   currentTable: TableState;
   selectedTables: TableState[];
 };

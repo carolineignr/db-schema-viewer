@@ -11,7 +11,7 @@
 	flex-direction: column;
 }
 
-.general_header {
+.home_header {
 	&__container {
 		display: flex;
 		justify-content: space-between;
@@ -22,6 +22,10 @@
 			color: #FFA229;
 			font-style: italic;
 			opacity: .3;
+		}
+
+		div {
+			display: flex;
 		}
 	}
 }

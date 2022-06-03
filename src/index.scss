@@ -5,11 +5,19 @@
   padding: 0;
   box-sizing: border-box;
 	font-family: 'Spline Sans Mono', monospace;
+}
+
+html {
+	overflow: hidden;
 	background-color: #fff;
 }
 
-.general__container {
-	height: 95vh;
+.app {
+	&__container {
+		height: 95vh;
+		background-color: #fff;
+		overflow: scroll;
+	}
 }
 
 button {
@@ -37,10 +45,10 @@ button {
 	background: transparent;
 	overflow: auto;
 	outline: none;
-	min-width: 450px;
+	max-width: 450px;
 	min-height: 620px;
 	margin: 0 auto;
-	color: white;
+	background-color: white;
 	z-index: 99;
 
 	button {

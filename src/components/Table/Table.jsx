@@ -21,7 +21,7 @@ export const Table = (props) => {
   function handleClick(e) {
     console.log(e);
     setActive(!active);
-    // onClick(table);
+    onClick(table);
   }
 
   return (
@@ -31,7 +31,9 @@ export const Table = (props) => {
           <boxBufferGeometry args={[1, 1, 0.3]} />
           <meshToonMaterial color={active ? 'white' : 'black'} />
         </mesh>
-        <Html position={textPosition}>{table.name}</Html>
+        <Html position={textPosition} zIndexRange={[0, 1]}>
+          {table.name}
+        </Html>
       </Box>
     </>
   );

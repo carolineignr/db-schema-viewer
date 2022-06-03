@@ -43,6 +43,11 @@ export const schemaReducer = (
         ...state,
         tipsModalOpen: action.payload,
       };
+    case 'SET_TOOL_DETAILS_MODAL':
+      return {
+        ...state,
+        toolDetailsOpen: action.payload,
+      };
     default:
       return state;
   }

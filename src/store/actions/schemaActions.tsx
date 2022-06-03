@@ -26,6 +26,11 @@ export const setTipsModal = (isOpen: boolean): ReduxAction => ({
   payload: isOpen,
 });
 
+export const setToolDetailsModal = (isOpen: boolean): ReduxAction => ({
+  type: 'SET_TOOL_DETAILS_MODAL',
+  payload: isOpen,
+});
+
 export const setCurrentTable = (tableObj: {}): ReduxAction => ({
   type: 'SET_CURRENT_TABLE',
   payload: tableObj,

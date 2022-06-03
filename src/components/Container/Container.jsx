@@ -2,14 +2,14 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { OrbitControls, OrthographicCamera } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Flex } from '@react-three/flex';
 
 import { Header } from '../Header/Header';
 import Tabs from '../Tabs/Tabs';
-import Table from '../DatabaseSchema/Table/Table.jsx';
+import Table from '../Table/Table.jsx';
 
 import styles from './Container.module.scss';
 

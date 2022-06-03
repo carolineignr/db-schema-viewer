@@ -6,6 +6,7 @@ import Form from '../../components/Form/Form';
 import {
   clearSchemas,
   setDatabaseModal,
+  setToolDetailsModal,
 } from '../../store/actions/schemaActions';
 import { ReduxState } from '../../utils/types';
 
@@ -15,6 +16,9 @@ const Sign = (): ReactElement => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector(
     (state: ReduxState) => state.databaseModalOpen,
+  );
+  const isToolDetailsModalOpen = useSelector(
+    (state: ReduxState) => state.toolDetailsOpen,
   );
 
   useEffect(() => {
@@ -30,6 +34,15 @@ const Sign = (): ReactElement => {
     dispatch(setDatabaseModal(false));
   }
 
+  function openToolDetailsModal(): void {
+    console.log('funcao do modal');
+    dispatch(setToolDetailsModal(true));
+  }
+
+  function closeToolDetailsModal(): void {
+    dispatch(setToolDetailsModal(false));
+  }
+
   return (
     <>
       <Modal
@@ -38,6 +51,19 @@ const Sign = (): ReactElement => {
         className="modalCustomStyle"
       >
         <Form />
+      </Modal>
+
+      <Modal
+        isOpen={isToolDetailsModalOpen}
+        onRequestClose={closeToolDetailsModal}
+        className="modalCustomStyle"
+      >
+        <div>
+          Infos
+          <button type="button" onClick={closeToolDetailsModal}>
+            Close
+          </button>
+        </div>
       </Modal>
 
       <section className={styles.pageWrapper}>
@@ -69,7 +95,9 @@ const Sign = (): ReactElement => {
         </div>
 
         <div className={styles.buttons__container}>
-          <button type="button">Tell me more about this tool</button>
+          <button type="button" onClick={openToolDetailsModal}>
+            Tell me more about this tool
+          </button>
           <button
             type="button"
             onClick={openDatabaseModal}

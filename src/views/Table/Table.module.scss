@@ -11,7 +11,7 @@
     font-size: .9rem;
     margin: 1rem 4.5rem;
     padding: 0 2rem 3rem 2rem;
-    border-bottom: .5px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid #000;
   }
   
   div {
@@ -50,23 +50,24 @@
     justify-items: center;
     border-bottom: .5px solid rgba(255, 255, 255, 0.1);
     margin: 0 2rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     
     span {
-      color: white;
       opacity: .6;
     }
   }
 
   &__container {
     padding: .5rem 2rem;
-    color: white;
+    margin: 0 2rem;
+    color: #000;
     justify-items: center;
 
     .name {
       color: #FFA229;
       letter-spacing: .2rem;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      text-align: left;
     }
 
     p {
@@ -74,34 +75,27 @@
     }
 
     span {
-      opacity: 1;
-
-      span {
-        color: #FFA229;
-      }
+      color: #FFA229;
     }
 
     &:hover {
-      background-color: #E8701A;
+      background-color: #FFA229;
       color: black;
-      font-size: 1.8rem;
-
-      p {
-        color: black;
-      }
+      font-size: 1.1rem;
 
       span {
-        color: black;
+        background-color: #FFA229;
+        color: #000;
         
         span {
-          color: white;
-          font-size: 1.3rem;
+          font-size: 1.1rem;
         }
       }
 
       .name {
-        color: white;
-        font-size: 2rem;
+        color: #fff;
+        font-weight: 500;
+        font-size: 1.5rem;
       }
     }
   }

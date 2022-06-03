@@ -7,7 +7,7 @@ import { Footer } from './components/Footer/Footer';
 
 function App(): React.ReactElement {
   return (
-    <div className="general__container">
+    <div className="app__container">
       <Routes>
         <Route path="/" element={<Sign />} />
         <Route path="/home" element={<Home />} />
