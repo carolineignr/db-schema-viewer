@@ -1,23 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import {
-  setDatabaseModal,
-  setSelectedTables,
-} from '../../store/actions/schemaActions';
-import { ReduxState, TableState } from '../../utils/types';
+import { TableState } from '../../utils/types';
 
 import styles from './Header.module.scss';
 
 export const Header = ({ schema, currentTable }: any): React.ReactElement => {
-  const dispatch = useDispatch();
-  const currentState = useSelector((state: ReduxState) => state);
-  const { schemas } = currentState;
-
-  function handleBackButton(): void {
-    dispatch(setSelectedTables([]));
-  }
-
   function renderTableInfoHeader(table: TableState): React.ReactElement {
     return (
       <>

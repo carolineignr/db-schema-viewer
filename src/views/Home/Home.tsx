@@ -25,7 +25,7 @@ export const Home = (): React.ReactElement => {
   const { selectedTables, databaseModalOpen, tipsModalOpen } = currentState;
   const isModalOpen = databaseModalOpen;
 
-  function handleCloseDatabaseModal(): void {
+  function closeDatabaseModal(): void {
     dispatch(setDatabaseModal(false));
   }
 
@@ -76,23 +76,42 @@ export const Home = (): React.ReactElement => {
     dispatch(setTipsModal(false));
   }
 
+  function clearSelectedSchemas(): void {
+    dispatch(setSelectedTables([]));
+  }
+
+  function exitApp(): void {
+    clearSelectedSchemas();
+    navigate(-1);
+  }
+
+  function renderNewDbButton(): boolean {
+    if (schemas.length < 2 && selectedTables.length < 2) return true;
+    return false;
+  }
+
   function renderGenericHeader(): React.ReactElement | any {
     return (
-      <div className={styles.home_header__container}>
-        <p>Available database schemas</p>
-        <button type="button" onClick={showTipsModal}>
-          How to manipulate the scene
-        </button>
-        <div aria-label="action buttons">
-          {schemas.length < 2 && (
+      <div className={styles.schemasHeader__wrapper}>
+        {renderNewDbButton() && (
+          <>
+            <p>Available database schemas</p>
+            <button type="button" onClick={showTipsModal}>
+              How to manipulate the scene
+            </button>
             <button type="button" onClick={openDatabaseModal}>
               New database
             </button>
-          )}
-          <button type="button" onClick={() => navigate(-1)}>
-            Exit
+          </>
+        )}
+        {selectedTables.length === 2 && (
+          <button type="button" onClick={clearSelectedSchemas}>
+            Back to schemas
           </button>
-        </div>
+        )}
+        <button type="button" onClick={exitApp}>
+          Exit
+        </button>
       </div>
     );
   }
@@ -109,7 +128,7 @@ export const Home = (): React.ReactElement => {
     <div>
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={handleCloseDatabaseModal}
+        onRequestClose={closeDatabaseModal}
         className="modalCustomStyle"
       >
         <div className={styles.modal_container}>

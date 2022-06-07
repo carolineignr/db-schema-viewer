@@ -32,6 +32,7 @@ export const Container = (customizedProps) => {
     return schemas.map((schema) => (
       <div className={styles.schema__container}>
         <Header schema={schema} />
+
         <Canvas>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
