@@ -22,7 +22,7 @@ export const Table = (props: any): React.ReactElement => {
     return relations;
   }
 
-  function renderColumnsReference(column): React.ReactElement {
+  function renderColumnReference(column): React.ReactElement {
     return (
       <span>
         {column.reference.table} ({column.reference.column})
@@ -59,7 +59,7 @@ export const Table = (props: any): React.ReactElement => {
               <p>{column.type || 'Not informed'}</p>
               <p>{column.isUpdatable ? 'Yes' : 'No'}</p>
               <p>{column.isIdentity ? 'Yes' : 'No'}</p>
-              <p>{column.reference ? renderColumnsReference(column) : 'No'}</p>
+              <p>{column.reference ? renderColumnReference(column) : 'No'}</p>
             </div>
           ))}
         </div>
