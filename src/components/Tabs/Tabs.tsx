@@ -16,13 +16,13 @@ const Tabs = (): React.ReactElement => {
   const tabs = [
     {
       id: 1,
-      tabTitle: `Schema ${schemaName1} - ${tableName1}`,
+      tabTitle: `${schemaName1} - ${tableName1}`,
       title: 'Title 1',
       content: <Table table={selectedTables[0]} />,
     },
     {
       id: 2,
-      tabTitle: `Schema ${schemaName2} - ${tableName2}`,
+      tabTitle: `${schemaName2} - ${tableName2}`,
       title: 'Title 2',
       content: <Table table={selectedTables[1]} />,
     },

@@ -66,8 +66,8 @@ const Sign = (): ReactElement => {
         </div>
       </Modal>
 
-      <section className={styles.pageWrapper}>
-        <div className={styles.presentation__container}>
+      <section className={styles.wrapper}>
+        <div className={styles.title__container}>
           <h1 className={styles.title}>
             {' '}
             Database Metadata <span>Visualizer</span>{' '}

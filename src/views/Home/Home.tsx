@@ -98,7 +98,7 @@ export const Home = (): React.ReactElement => {
 
   function renderGenericHeader(): React.ReactElement | any {
     return (
-      <div className={styles.schemasHeader__wrapper}>
+      <div className={styles.home_header__container}>
         {selectedTables.length === 2 ? (
           <button type="button" onClick={clearSelectedSchemas}>
             Back to schemas
@@ -110,14 +110,20 @@ export const Home = (): React.ReactElement => {
             </button>
           </>
         )}
-        {renderNewDbButton() && (
-          <button type="button" onClick={openDatabaseModal}>
-            New database
+        <div>
+          {renderNewDbButton() && (
+            <button type="button" onClick={openDatabaseModal}>
+              New database
+            </button>
+          )}
+          <button
+            className={styles.exit__button}
+            type="button"
+            onClick={exitApp}
+          >
+            Exit
           </button>
-        )}
-        <button type="button" onClick={exitApp}>
-          Exit
-        </button>
+        </div>
       </div>
     );
   }
@@ -131,7 +137,7 @@ export const Home = (): React.ReactElement => {
   }, [schemas, navigate]);
 
   return (
-    <div>
+    <section className={styles.wrapper}>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeDatabaseModal}
@@ -147,21 +153,17 @@ export const Home = (): React.ReactElement => {
         onRequestClose={closeTipsModal}
         className="modalCustomStyle"
       >
-        <div className={styles.modal_container}>
-          <ManipulateSceneTipsModal closeModal={closeTipsModal} />
-        </div>
+        <ManipulateSceneTipsModal closeModal={closeTipsModal} />
       </Modal>
 
       {schemas.length > 0 && renderGenericHeader()}
 
-      <section className={styles.wrapper}>
-        <Container
-          schemas={schemas}
-          selectedTables={selectedTables}
-          onClick={onClickTable}
-        />
-      </section>
-    </div>
+      <Container
+        schemas={schemas}
+        selectedTables={selectedTables}
+        onClick={onClickTable}
+      />
+    </section>
   );
 };
 

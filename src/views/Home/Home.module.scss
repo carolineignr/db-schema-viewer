@@ -1,7 +1,8 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	height: 80vh;
+	max-width: 1024px;
+	margin: 0 auto;
 }
 
 .modal_container {
@@ -15,21 +16,14 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
-		margin: 1rem 2rem;
+		margin: 1rem 0;
 
-		.name {
+		.exit__button {
 			margin-left: 1rem;
-			color: #FFA229;
-			font-style: italic;
-			opacity: .3;
 		}
 
 		div {
 			display: flex;
 		}
 	}
-}
-
-button {
-	margin-left: 10px;
 }

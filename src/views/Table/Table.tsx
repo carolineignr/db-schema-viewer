@@ -38,14 +38,14 @@ export const Table = (props: any): React.ReactElement => {
         </span>
         <div className={styles.infosColumns__header}>
           <span>Column name</span>
-          <span>Is primary key</span>
-          <span>Max num of characters</span>
+          <span>Primary key</span>
+          <span>Max characters num</span>
           <span>Nullable</span>
           <span>Default value</span>
           <span>Data domain</span>
           <span>Updatable</span>
-          <span>Is an identity column</span>
-          <span>Is foreign key</span>
+          <span>Identity column</span>
+          <span>Foreign key</span>
         </div>
 
         <div className={styles.infosColumns}>
@@ -71,32 +71,34 @@ export const Table = (props: any): React.ReactElement => {
     <>
       <Header currentTable={props.table} />
 
-      <span className={styles.section__title}>
-        What we know about this table
-      </span>
       <div className={styles.infosTable__container}>
-        <div>
-          <span>Total number of columns</span>
-          <p style={{ fontSize: '3rem', color: '#FFA229' }}>
-            {props.table.columns.length}
-          </p>
-        </div>
-        <div>
-          <span>Comments</span>
-          <p style={{ color: '#FFA229' }}>
-            {props.table.comment || 'No comments'}
-          </p>
-        </div>
-        <div>
-          <span>Tags</span>
-          {/* renderizar as tags dentro de 'mini cards' */}
-          <p style={{ color: '#FFA229' }}>
-            {hasTags ? renderTags() : 'No tags'}
-          </p>
-        </div>
-        <div>
-          <span>How many tables does it relate to</span>
-          <p style={{ fontSize: '3rem', color: '#FFA229' }}>{relationWith()}</p>
+        <span className={styles.section__title}>
+          What we know about this table
+        </span>
+        <div className={styles.infos}>
+          <div>
+            <span>Total number of columns</span>
+            <p style={{ fontSize: '3rem', color: '#FFA229' }}>
+              {props.table.columns.length}
+            </p>
+          </div>
+          <div>
+            <span>Comments</span>
+            <p style={{ color: '#FFA229' }}>
+              {props.table.comment || 'No comments'}
+            </p>
+          </div>
+          <div>
+            <span>Tags</span>
+            {/* renderizar as tags dentro de 'mini cards' */}
+            <p style={{ color: '#FFA229' }}>
+              {hasTags ? renderTags() : 'No tags'}
+            </p>
+          </div>
+          <div>
+            <span>How many tables does it relate to</span>
+            <p style={{ fontSize: '3rem', color: '#FFA229' }}>{relationWith()}</p>
+          </div>
         </div>
       </div>
 

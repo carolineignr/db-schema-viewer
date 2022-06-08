@@ -1,8 +1,7 @@
 .schema {
   &__container {
     border: 1px solid #000000;
-    margin: 1rem auto;
-    width: 70%;
+    margin: 1rem 0;
     
     div {
       background: #fff;
@@ -10,7 +9,6 @@
 
     div > canvas {
       height: 400px;
-      background-color: #706e6c57;
     }
   }
 }

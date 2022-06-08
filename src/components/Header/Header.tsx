@@ -18,7 +18,7 @@ export const Header = ({ schema, currentTable }: any): React.ReactElement => {
   function renderDatabaseSchemaHeader(): React.ReactElement {
     return (
       <>
-        <div>
+        <div className={styles.database}>
           <span>Database name</span>
           <p>{schema.tables[0].columns[0].rawInfo.table_catalog}</p>
           <span>Total columns: {schema.tables.length}</span>
@@ -29,11 +29,11 @@ export const Header = ({ schema, currentTable }: any): React.ReactElement => {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
+      <div className={styles.container}>
         {!schema
           ? renderTableInfoHeader(currentTable)
           : renderDatabaseSchemaHeader()}
-      </nav>
+      </div>
     </header>
   );
 };

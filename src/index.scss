@@ -9,12 +9,11 @@
 
 html {
 	overflow: hidden;
-	background-color: #fff;
 }
 
 .app {
 	&__container {
-		height: 95vh;
+		height: 100vh;
 		background-color: #fff;
 		overflow: scroll;
 	}
@@ -46,10 +45,11 @@ button {
 	overflow: auto;
 	outline: none;
 	max-width: 450px;
-	min-height: 620px;
+	max-height: 620px;
 	margin: 0 auto;
 	background-color: white;
 	z-index: 99;
+	border-radius: 5px;
 
 	button {
 		margin: .5rem 0;
