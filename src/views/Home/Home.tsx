@@ -16,6 +16,7 @@ import {
 } from '../../store/actions/schemaActions';
 
 import styles from './Home.module.scss';
+import ManipulateSceneTipsModal from '../../components/ManipulateSceneTipsModal/ManipulateSceneTipsModal';
 
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
@@ -147,19 +148,7 @@ export const Home = (): React.ReactElement => {
         className="modalCustomStyle"
       >
         <div className={styles.modal_container}>
-          <div>
-            <h1>How to move the camera</h1>
-            <span>Tips to move camera</span>
-
-            <h1>How to get closer to the 3D objects</h1>
-            <span>Tips to get closer</span>
-
-            <h1>How to change the visualization perspective</h1>
-            <span>Tips to update perspective</span>
-          </div>
-          <button type="button" onClick={closeTipsModal}>
-            Close
-          </button>
+          <ManipulateSceneTipsModal closeModal={closeTipsModal} />
         </div>
       </Modal>
 
