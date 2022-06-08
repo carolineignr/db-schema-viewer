@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
@@ -43,6 +44,9 @@ export const Home = (): React.ReactElement => {
       dispatch(setSelectedTables(updatedArr));
       return true;
     } catch (e) {
+      alert(
+        'It was not possible to unselect this table, please restart the application and try again',
+      );
       console.log(e);
       return false;
     }
@@ -52,14 +56,15 @@ export const Home = (): React.ReactElement => {
     if (currentState.selectedTables.length <= 2) {
       if (objectAlreadyIn(table)) {
         removeObjFromSelectedTables(table);
-        // Mostrar erro para o usuário
-        console.log('These table is already selected');
+        alert(
+          'It was not possible to select this table, please restart the application and try again.',
+        );
       } else {
         selectedTables.push(table);
         dispatch(setSelectedTables(selectedTables));
       }
     } else {
-      // Mostrar erro para o usuário
+      alert('This table is already selected');
       console.log('Already have two tables');
     }
   }
@@ -93,20 +98,20 @@ export const Home = (): React.ReactElement => {
   function renderGenericHeader(): React.ReactElement | any {
     return (
       <div className={styles.schemasHeader__wrapper}>
-        {renderNewDbButton() && (
+        {selectedTables.length === 2 ? (
+          <button type="button" onClick={clearSelectedSchemas}>
+            Back to schemas
+          </button>
+        ) : (
           <>
-            <p>Available database schemas</p>
             <button type="button" onClick={showTipsModal}>
               How to manipulate the scene
             </button>
-            <button type="button" onClick={openDatabaseModal}>
-              New database
-            </button>
           </>
         )}
-        {selectedTables.length === 2 && (
-          <button type="button" onClick={clearSelectedSchemas}>
-            Back to schemas
+        {renderNewDbButton() && (
+          <button type="button" onClick={openDatabaseModal}>
+            New database
           </button>
         )}
         <button type="button" onClick={exitApp}>

@@ -19,8 +19,8 @@ export const Container = (customizedProps) => {
   function renderTables(schema) {
     return schema.tables.map((table) => (
       <Table
-        position={[-20, 5, -5]}
-        textPosition={[-20, 6, -5]}
+        position={[-20, 5, 0]}
+        textPosition={[-20, 6, 0]}
         table={table}
         key={table.name}
         onClick={onClick}

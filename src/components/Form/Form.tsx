@@ -9,12 +9,12 @@ import {
 } from '../../store/actions/schemaActions';
 
 import requests from '../../utils/index';
-import { DatabaseInputParams, ReduxState } from '../../utils/types';
+import { ReduxState } from '../../utils/types';
 
 import styles from './Form.module.scss';
 
 const Form = (): ReactElement => {
-  const inputParams = useSelector((state: ReduxState) => state.inputParams);
+  const { inputParams, schemas } = useSelector((state: ReduxState) => state);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,14 +40,14 @@ const Form = (): ReactElement => {
   async function loadSchema(): Promise<void> {
     try {
       const data: any = await requests.SCHEMA_GET(inputParams);
-      if (data.tables.length < 1) {
-        throw new Error('Não foi possível acessar o banco de dados.');
+      if (data.tables?.length < 1) {
+        throw new Error('It was not possible to access the informed database.');
       }
 
       dispatch(setSchema(data));
       navigate('/home');
     } catch (error) {
-      // eslint-disable-next-line no-console
+      alert(error);
       console.log(error);
     }
   }
@@ -63,6 +63,14 @@ const Form = (): ReactElement => {
   function handleCloseDatabaseModal(): void {
     dispatch(setDatabaseModal(false));
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (schemas.length === 2) {
+        alert('Second database saved!');
+      }
+    }, 1000);
+  }, [schemas]);
 
   return (
     <section className={styles.container}>
