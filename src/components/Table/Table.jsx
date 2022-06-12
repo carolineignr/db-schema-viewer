@@ -9,6 +9,7 @@ import { Html } from '@react-three/drei';
 
 export const Table = (props) => {
   const [active, setActive] = useState(false);
+  const [hover, setHover] = useState(false);
   const mesh = useRef();
   const rotation = 0.01;
   const { onClick, table, position, textPosition } = props;
@@ -18,18 +19,34 @@ export const Table = (props) => {
     mesh.current.rotation.y += rotation;
   });
 
-  function handleClick(e) {
-    console.log(e);
+  function activateHover() {
+    setHover(true);
+  }
+
+  function desactivateHover() {
+    setHover(false);
+  }
+
+  function handleClick() {
     setActive(!active);
     onClick(table);
   }
 
   return (
     <>
-      <Box margin={3}>
-        <mesh onClick={handleClick} ref={mesh} position={position}>
+      <Box
+        margin={3.5}
+        onPointerEnter={activateHover}
+        onPointerLeave={desactivateHover}
+      >
+        <mesh
+          onClick={handleClick}
+          ref={mesh}
+          position={position}
+          style={{ cursor: 'pointer', color: 'white' }}
+        >
           <boxBufferGeometry args={[1, 1, 0.3]} />
-          <meshToonMaterial color={active ? 'white' : 'black'} />
+          <meshToonMaterial color={active || hover ? 'white' : 'black'} />
         </mesh>
         <Html position={textPosition} zIndexRange={[0, 1]}>
           {table.name}

@@ -13,6 +13,7 @@ import {
   setDatabaseModal,
   setSelectedTables,
   setTipsModal,
+  setShowTablesInfos,
 } from '../../store/actions/schemaActions';
 
 import styles from './Home.module.scss';
@@ -24,7 +25,12 @@ export const Home = (): React.ReactElement => {
 
   const schemas = useSelector((state: ReduxState) => state.schemas);
   const currentState = useSelector((state: ReduxState) => state);
-  const { selectedTables, databaseModalOpen, tipsModalOpen } = currentState;
+  const {
+    selectedTables,
+    databaseModalOpen,
+    tipsModalOpen,
+    showTablesInfos,
+  } = currentState;
   const isModalOpen = databaseModalOpen;
 
   function closeDatabaseModal(): void {
@@ -40,32 +46,26 @@ export const Home = (): React.ReactElement => {
   function removeObjFromSelectedTables(clickedTable: TableState): boolean {
     try {
       const updatedArr = selectedTables.filter(
-        (table) => JSON.stringify(table) === JSON.stringify(clickedTable),
+        (table) => JSON.stringify(table) !== JSON.stringify(clickedTable),
       );
       dispatch(setSelectedTables(updatedArr));
       return true;
     } catch (e) {
-      alert(
-        'It was not possible to unselect this table, please restart the application and try again',
-      );
       console.log(e);
       return false;
     }
   }
 
   function onClickTable(table: TableState): any {
-    if (currentState.selectedTables.length <= 2) {
+    if (selectedTables.length <= 2) {
       if (objectAlreadyIn(table)) {
         removeObjFromSelectedTables(table);
-        alert(
-          'It was not possible to select this table, please restart the application and try again.',
-        );
       } else {
         selectedTables.push(table);
         dispatch(setSelectedTables(selectedTables));
       }
     } else {
-      alert('This table is already selected');
+      alert('Already have two tables');
       console.log('Already have two tables');
     }
   }
@@ -84,36 +84,52 @@ export const Home = (): React.ReactElement => {
 
   function clearSelectedSchemas(): void {
     dispatch(setSelectedTables([]));
+    dispatch(setShowTablesInfos(false));
   }
 
   function exitApp(): void {
     clearSelectedSchemas();
-    navigate(-1);
+    dispatch(setShowTablesInfos(false));
+    navigate('/');
+  }
+
+  function handleShowTablesInfos(): void {
+    dispatch(setShowTablesInfos(true));
   }
 
   function renderNewDbButton(): boolean {
-    if (schemas.length < 2 && selectedTables.length < 2) return true;
-    return false;
+    return schemas.length < 2 && selectedTables.length < 2;
   }
 
   function renderGenericHeader(): React.ReactElement | any {
     return (
       <div className={styles.home_header__container}>
-        {selectedTables.length === 2 ? (
+        {selectedTables.length === 2 && showTablesInfos ? (
           <button type="button" onClick={clearSelectedSchemas}>
             Back to schemas
           </button>
         ) : (
-          <>
+          selectedTables.length === 2 && (
+            <button
+              type="button"
+              onClick={handleShowTablesInfos}
+              className={styles.detach__button}
+            >
+              Check these tables
+            </button>
+          )
+        )}
+
+        {renderNewDbButton() && (
+          <button type="button" onClick={openDatabaseModal}>
+            New database
+          </button>
+        )}
+
+        <div>
+          {!showTablesInfos && (
             <button type="button" onClick={showTipsModal}>
               How to manipulate the scene
-            </button>
-          </>
-        )}
-        <div>
-          {renderNewDbButton() && (
-            <button type="button" onClick={openDatabaseModal}>
-              New database
             </button>
           )}
           <button
@@ -129,10 +145,6 @@ export const Home = (): React.ReactElement => {
   }
 
   useEffect(() => {
-    if (schemas.length < 1) {
-      navigate(-1);
-    }
-
     Modal.setAppElement('#root');
   }, [schemas, navigate]);
 
@@ -143,9 +155,7 @@ export const Home = (): React.ReactElement => {
         onRequestClose={closeDatabaseModal}
         className="modalCustomStyle"
       >
-        <div className={styles.modal_container}>
-          <Form />
-        </div>
+        <Form />
       </Modal>
 
       <Modal
@@ -156,13 +166,16 @@ export const Home = (): React.ReactElement => {
         <ManipulateSceneTipsModal closeModal={closeTipsModal} />
       </Modal>
 
-      {schemas.length > 0 && renderGenericHeader()}
+      {renderGenericHeader()}
 
-      <Container
-        schemas={schemas}
-        selectedTables={selectedTables}
-        onClick={onClickTable}
-      />
+      {schemas.length > 0 && (
+        <Container
+          schemas={schemas}
+          selectedTables={selectedTables}
+          onClick={onClickTable}
+          showTablesInfos={showTablesInfos}
+        />
+      )}
     </section>
   );
 };

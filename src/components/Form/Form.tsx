@@ -45,7 +45,6 @@ const Form = (): ReactElement => {
       }
 
       dispatch(setSchema(data));
-      navigate('/home');
     } catch (error) {
       alert(error);
       console.log(error);
@@ -75,9 +74,9 @@ const Form = (): ReactElement => {
   return (
     <section className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <p>Database information&apos;s to access</p>
+        <p>Database access information</p>
         <label htmlFor="host">
-          Host name
+          Host address
           <input
             className={styles.formInput}
             name="host"

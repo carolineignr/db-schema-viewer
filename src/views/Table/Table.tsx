@@ -53,10 +53,10 @@ export const Table = (props: any): React.ReactElement => {
             <div className={styles.infosColumns__container}>
               <p className={styles.name}>{column.name || 'Not informed'}</p>
               <p>{column.isPrimary ? 'Yes' : 'No'}</p>
-              <p>{column.maxLength || 'Not defined'}</p>
+              <p>{column.maxLength || 'No'}</p>
               <p>{column.nullable ? 'Yes' : 'No'}</p>
-              <p>{column.defaultValue || 'Not defined'}</p>
-              <p>{column.type || 'Not informed'}</p>
+              <p>{column.defaultValue || 'No'}</p>
+              <p>{column.type || 'No'}</p>
               <p>{column.isUpdatable ? 'Yes' : 'No'}</p>
               <p>{column.isIdentity ? 'Yes' : 'No'}</p>
               <p>{column.reference ? renderColumnReference(column) : 'No'}</p>

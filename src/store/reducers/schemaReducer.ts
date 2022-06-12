@@ -48,6 +48,11 @@ export const schemaReducer = (
         ...state,
         toolDetailsOpen: action.payload,
       };
+    case 'SET_SHOW_TABLES_INFOS':
+      return {
+        ...state,
+        showTablesInfos: action.payload,
+      };
     default:
       return state;
   }

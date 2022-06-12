@@ -42,3 +42,8 @@ export const setSelectedTables = (tables: Array<TableState>): ReduxAction => ({
   type: 'SET_SELECTED_TABLES',
   payload: tables,
 });
+
+export const setShowTablesInfos = (show: boolean): ReduxAction => ({
+  type: 'SET_SHOW_TABLES_INFOS',
+  payload: show,
+});

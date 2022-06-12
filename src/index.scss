@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Spline+Sans+Mono:wght@300;400;500&display=swap');
 
 * { 
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-	font-family: 'Spline Sans Mono', monospace;
+	font-family: 'Inter', sans-serif;
 }
 
 html {
@@ -21,17 +21,21 @@ html {
 
 button {
 	background: transparent;
-	color: #000;
+	color: #E5E5E5;
 	padding: 1.5rem;
-	border: .5px solid #EAA954;
+	border: .5px solid #E5E5E5;
 	font-weight: 700;
 	cursor: pointer;
-	opacity: .8;
+	opacity: .7;
 	font-size: 1rem;
+	font-family: 'Spline Sans Mono', monospace;
+	text-transform: uppercase;
+	border-radius: 20rem;
 
 	&:hover {
 		background-color: #FFA229;
-		border: 1px solid #000;
+		border-color: #FFA229 !important;
+		color: #000;
 		opacity: 1;
 	}
 }
@@ -49,7 +53,7 @@ button {
 	margin: 0 auto;
 	background-color: white;
 	z-index: 99;
-	border-radius: 5px;
+	border-radius: 10px;
 
 	button {
 		margin: .5rem 0;

@@ -19,6 +19,7 @@ export type ReduxState = {
   toolDetailsOpen: boolean;
   currentTable: TableState;
   selectedTables: TableState[];
+  showTablesInfos: boolean;
 };
 
 export type SchemaState = {

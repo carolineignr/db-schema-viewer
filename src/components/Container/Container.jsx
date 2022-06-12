@@ -14,7 +14,7 @@ import Table from '../Table/Table.jsx';
 import styles from './Container.module.scss';
 
 export const Container = (customizedProps) => {
-  const { schemas, onClick, selectedTables } = customizedProps;
+  const { schemas, onClick, showTablesInfos } = customizedProps;
 
   function renderTables(schema) {
     return schema.tables.map((table) => (
@@ -58,7 +58,7 @@ export const Container = (customizedProps) => {
     ));
   }
 
-  return <div>{selectedTables.length === 2 ? <Tabs /> : renderSchemas()}</div>;
+  return <div>{showTablesInfos ? <Tabs /> : renderSchemas()}</div>;
 };
 
 export default Container;
