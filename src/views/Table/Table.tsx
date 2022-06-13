@@ -32,38 +32,38 @@ export const Table = (props: any): React.ReactElement => {
 
   function renderColumnsInfos(): React.ReactElement {
     return (
-      <div>
-        <span className={styles.section__title}>
-          What we know about this table columns
-        </span>
-        <div className={styles.infosColumns__header}>
-          <span>Column name</span>
-          <span>Primary key</span>
-          <span>Max characters num</span>
-          <span>Nullable</span>
-          <span>Default value</span>
-          <span>Data domain</span>
-          <span>Updatable</span>
-          <span>Identity column</span>
-          <span>Foreign key</span>
-        </div>
+      <>
+        <span className={styles.section__title}>About this table columns</span>
+        <div className={styles.columnsInfos__wrapper}>
+          <div className={styles.infosColumns__header}>
+            <span>Column name</span>
+            <span>Primary key</span>
+            <span>Max characters num</span>
+            <span>Nullable</span>
+            <span>Default value</span>
+            <span>Data domain</span>
+            <span>Updatable</span>
+            <span>Identity column</span>
+            <span>Foreign key</span>
+          </div>
 
-        <div className={styles.infosColumns}>
-          {props.table.columns.map((column) => (
-            <div className={styles.infosColumns__container}>
-              <p className={styles.name}>{column.name || 'Not informed'}</p>
-              <p>{column.isPrimary ? 'Yes' : 'No'}</p>
-              <p>{column.maxLength || 'No'}</p>
-              <p>{column.nullable ? 'Yes' : 'No'}</p>
-              <p>{column.defaultValue || 'No'}</p>
-              <p>{column.type || 'No'}</p>
-              <p>{column.isUpdatable ? 'Yes' : 'No'}</p>
-              <p>{column.isIdentity ? 'Yes' : 'No'}</p>
-              <p>{column.reference ? renderColumnReference(column) : 'No'}</p>
-            </div>
-          ))}
+          <div className={styles.infosColumns}>
+            {props.table.columns.map((column) => (
+              <div className={styles.infosColumns__container}>
+                <p className={styles.name}>{column.name || 'Not informed'}</p>
+                <p>{column.isPrimary ? 'Yes' : 'No'}</p>
+                <p>{column.maxLength || 'No'}</p>
+                <p>{column.nullable ? 'Yes' : 'No'}</p>
+                <p>{column.defaultValue || 'No'}</p>
+                <p>{column.type || 'No'}</p>
+                <p>{column.isUpdatable ? 'Yes' : 'No'}</p>
+                <p>{column.isIdentity ? 'Yes' : 'No'}</p>
+                <p>{column.reference ? renderColumnReference(column) : 'No'}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -72,9 +72,7 @@ export const Table = (props: any): React.ReactElement => {
       <Header currentTable={props.table} />
 
       <div className={styles.infosTable__container}>
-        <span className={styles.section__title}>
-          What we know about this table
-        </span>
+        <span className={styles.section__title}>About this table</span>
         <div className={styles.infos}>
           <div>
             <span>Total number of columns</span>

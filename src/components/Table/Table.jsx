@@ -46,7 +46,7 @@ export const Table = (props) => {
           style={{ cursor: 'pointer', color: 'white' }}
         >
           <boxBufferGeometry args={[1, 1, 0.3]} />
-          <meshToonMaterial color={active || hover ? 'white' : 'black'} />
+          <meshToonMaterial color={active || hover ? '#f4762d' : 'black'} />
         </mesh>
         <Html position={textPosition} zIndexRange={[0, 1]}>
           {table.name}

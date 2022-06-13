@@ -33,27 +33,29 @@ export const Container = (customizedProps) => {
       <div className={styles.schema__container}>
         <Header schema={schema} />
 
-        <Canvas>
-          <ambientLight />
-          <pointLight position={[10, 10, 10]} />
-          <OrbitControls />
-          <OrthographicCamera makeDefault position={[50, 10, 10]} zoom={30} />
-          <Flex
-            justifyContent="center"
-            alignItems="center"
-            flexDir="row"
-            flexWrap="wrap"
-            size={[40, 10, 10]}
-          >
-            {renderTables(schema)}
-            {/* Teste com múltiplas tabelas */}
-            {/* {renderTables(schema)}
-            {renderTables(schema)}
-            {renderTables(schema)}
-            {renderTables(schema)}
-            {renderTables(schema)} */}
-          </Flex>
-        </Canvas>
+        <div className={styles.canvas__wrapper}>
+          <Canvas>
+            <ambientLight />
+            <pointLight position={[10, 10, 10]} />
+            <OrbitControls />
+            <OrthographicCamera makeDefault position={[50, 10, 10]} zoom={30} />
+            <Flex
+              justifyContent="center"
+              alignItems="center"
+              flexDir="row"
+              flexWrap="wrap"
+              size={[40, 10, 10]}
+            >
+              {renderTables(schema)}
+              {/* Teste com múltiplas tabelas */}
+              {/* {renderTables(schema)}
+              {renderTables(schema)}
+              {renderTables(schema)}
+              {renderTables(schema)}
+              {renderTables(schema)} */}
+            </Flex>
+          </Canvas>
+        </div>
       </div>
     ));
   }

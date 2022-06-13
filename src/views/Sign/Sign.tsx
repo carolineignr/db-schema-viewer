@@ -52,13 +52,17 @@ const Sign = (): ReactElement => {
           </p>
 
           <div className={styles.buttons__container}>
-            <button type="button" onClick={openToolDetailsModal}>
+            <button
+              type="button"
+              onClick={openToolDetailsModal}
+              className={styles.secondary}
+            >
               More info
             </button>
             <button
               type="button"
               onClick={redirectToHome}
-              className={styles.getStarted}
+              className={styles.primary}
             >
               Get started &gt;
             </button>

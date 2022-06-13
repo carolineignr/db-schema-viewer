@@ -6,7 +6,6 @@
 .container {
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 1px solid #000;
 	padding-bottom: 1rem;
 
 	.database {
@@ -16,13 +15,12 @@
 	div > p {
 		font-size: 2rem;
 		margin-top: .2rem;
-		color: #FFA229;
+		font-weight: 700;
 		text-transform: uppercase;
 	}
 
 	div > span {
 		opacity: 1;
-		letter-spacing: .2rem;
 	}
 }
 

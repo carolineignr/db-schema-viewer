@@ -72,52 +72,65 @@ const Form = (): ReactElement => {
   }, [schemas]);
 
   return (
-    <section className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <p>Database access information</p>
-        <label htmlFor="host">
-          Host address
-          <input
-            className={styles.formInput}
-            name="host"
-            value={inputParams.host}
-            onChange={(e) => updateValue(e)}
-          />
-        </label>
-        <label htmlFor="database">
-          Database name
-          <input
-            className={styles.formInput}
-            name="database"
-            value={inputParams.database}
-            onChange={(e) => updateValue(e)}
-          />
-        </label>
-        <label htmlFor="user">
-          Username to access database
-          <input
-            className={styles.formInput}
-            name="user"
-            value={inputParams.user}
-            onChange={(e) => updateValue(e)}
-          />
-        </label>
-        <label htmlFor="password">
-          Password to access database
-          <input
-            className={styles.formInput}
-            name="password"
-            value={inputParams.password}
-            onChange={(e) => updateValue(e)}
-            type="password"
-          />
-        </label>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCloseDatabaseModal}>
-          Cancel
-        </button>
-      </form>
-    </section>
+    <>
+      <section className={styles.container}>
+        <span
+          role="button"
+          className={styles.exit__button}
+          onClick={handleCloseDatabaseModal}
+          onKeyPress={handleCloseDatabaseModal}
+          tabIndex={0}
+        >
+          Close
+        </span>
+        <form onSubmit={handleSubmit}>
+          <p>Database access information</p>
+          <label htmlFor="host">
+            Host address
+            <input
+              className={styles.formInput}
+              name="host"
+              value={inputParams.host}
+              onChange={(e) => updateValue(e)}
+            />
+          </label>
+          <label htmlFor="database">
+            Database name
+            <input
+              className={styles.formInput}
+              name="database"
+              value={inputParams.database}
+              onChange={(e) => updateValue(e)}
+            />
+          </label>
+          <label htmlFor="user">
+            Username to access database
+            <input
+              className={styles.formInput}
+              name="user"
+              value={inputParams.user}
+              onChange={(e) => updateValue(e)}
+            />
+          </label>
+          <label htmlFor="password">
+            Password to access database
+            <input
+              className={styles.formInput}
+              name="password"
+              value={inputParams.password}
+              onChange={(e) => updateValue(e)}
+              type="password"
+            />
+          </label>
+          <button type="submit" className={styles.primary}>
+            Submit
+          </button>
+          <button type="button" onClick={handleCloseDatabaseModal}>
+            Cancel
+          </button>
+        </form>
+      </section>
+    </>
   );
 };
 

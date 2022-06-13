@@ -3,6 +3,6 @@ import styles from './EmptyState.module.scss';
 
 export const EmptyState = (): React.ReactElement => (
   <div className={styles.empty}>
-    <p>No database schema was founded.</p>
+    <p>Add some database by clicking on the top left button here.</p>
   </div>
 );

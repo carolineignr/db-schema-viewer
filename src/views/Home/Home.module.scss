@@ -16,16 +16,19 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
-		margin: 1rem 0;
+		margin-top: 1rem;
 
 		.exit__button {
 			margin-left: 1rem;
 		}
 
-		.detach__button {
-			background-color: #FFA229;
+		.primary {
+			background: url('./../../assets/images/gradient.png');
+			background-size: 15rem;
+			opacity: .9;
+			margin-left: 1rem;
 			color: #000;
-			opacity: 1;
+			border: none;
 		}
 
 		div {

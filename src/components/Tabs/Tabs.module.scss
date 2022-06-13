@@ -1,6 +1,7 @@
 .tabs {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .tabs button {
@@ -13,6 +14,7 @@
   background-color: rgba(255, 255, 255, 0.4);
   transition: all 0.5s ease-out;
   font-size: 1.5rem;
+  border-radius: 5px;
 }
 
 .tabs button:hover {
@@ -21,7 +23,8 @@
 }
 
 .tabs button:disabled {
-  background: #FFAD42;
+  background: url('./../../assets/images/gradient.png');
+	background-size: 50rem;
   color: white;
   opacity: 1;
 }
@@ -40,7 +43,6 @@
   font-weight: 300;
   font-size: 16px;
   text-align: justify;
-  border: 1px solid white;
 }
 
 .content {

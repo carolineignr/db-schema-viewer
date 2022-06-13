@@ -6,6 +6,15 @@ export const ManipulateSceneTipsModal = ({
   closeModal,
 }: any): React.ReactElement => (
   <div className={styles.container}>
+    <span
+      role="button"
+      className={styles.exit__button}
+      onClick={closeModal}
+      onKeyPress={closeModal}
+      tabIndex={0}
+    >
+      Close
+    </span>
     <div className={styles.content}>
       <p className={styles.title}>Scene manipulation tips</p>
       <p>How to change the visualization perspective</p>

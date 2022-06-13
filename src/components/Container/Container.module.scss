@@ -1,14 +1,16 @@
 .schema {
   &__container {
-    border: 1px solid #000000;
     margin: 1rem 0;
     
-    div {
+    div > canvas {
+      height: 450px;
       background: #fff;
+      border-radius: 1rem;
     }
 
-    div > canvas {
-      height: 500px;
+    .canvas__wrapper {
+      border-radius: 1rem;
+      box-shadow: 1px 4px 4px #888888
     }
   }
 }

@@ -18,6 +18,7 @@ import {
 
 import styles from './Home.module.scss';
 import ManipulateSceneTipsModal from '../../components/ManipulateSceneTipsModal/ManipulateSceneTipsModal';
+import { EmptyState } from '../../components/EmptyState/EmptyState';
 
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ export const Home = (): React.ReactElement => {
             <button
               type="button"
               onClick={handleShowTablesInfos}
-              className={styles.detach__button}
+              className={styles.primary}
             >
               Check these tables
             </button>
@@ -121,15 +122,19 @@ export const Home = (): React.ReactElement => {
         )}
 
         {renderNewDbButton() && (
-          <button type="button" onClick={openDatabaseModal}>
+          <button
+            type="button"
+            onClick={openDatabaseModal}
+            className={styles.primary}
+          >
             New database
           </button>
         )}
 
-        <div>
+        <div className={styles.leftSide}>
           {!showTablesInfos && (
             <button type="button" onClick={showTipsModal}>
-              How to manipulate the scene
+              Tips to manipulate the 3D scene
             </button>
           )}
           <button
@@ -168,13 +173,15 @@ export const Home = (): React.ReactElement => {
 
       {renderGenericHeader()}
 
-      {schemas.length > 0 && (
+      {schemas.length > 0 ? (
         <Container
           schemas={schemas}
           selectedTables={selectedTables}
           onClick={onClickTable}
           showTablesInfos={showTablesInfos}
         />
+      ) : (
+        <EmptyState />
       )}
     </section>
   );
