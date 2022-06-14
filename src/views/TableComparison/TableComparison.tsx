@@ -2,7 +2,7 @@
 // eslint-disable react/prop-types
 import React from 'react';
 import { Header } from '../../components/Header/Header';
-import styles from './Table.module.scss';
+import styles from './TableComparison.module.scss';
 
 export const Table = (props: any): React.ReactElement => {
   const hasTags = Object.keys(props.table.tags).length > 0;
@@ -76,26 +76,20 @@ export const Table = (props: any): React.ReactElement => {
         <div className={styles.infos}>
           <div>
             <span>Total number of columns</span>
-            <p style={{ fontSize: '3rem', color: '#FFA229' }}>
-              {props.table.columns.length}
-            </p>
+            <p>{props.table.columns.length}</p>
           </div>
           <div>
             <span>Comments</span>
-            <p style={{ color: '#FFA229' }}>
-              {props.table.comment || 'No comments'}
-            </p>
+            <p>{props.table.comment || 'No comments'}</p>
           </div>
           <div>
             <span>Tags</span>
             {/* renderizar as tags dentro de 'mini cards' */}
-            <p style={{ color: '#FFA229' }}>
-              {hasTags ? renderTags() : 'No tags'}
-            </p>
+            <p>{hasTags ? renderTags() : 'No tags'}</p>
           </div>
           <div>
-            <span>How many tables does it relate to</span>
-            <p style={{ fontSize: '3rem', color: '#FFA229' }}>{relationWith()}</p>
+            <span>How many tables relationships</span>
+            <p>{relationWith()}</p>
           </div>
         </div>
       </div>

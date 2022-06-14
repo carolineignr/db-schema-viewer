@@ -98,8 +98,12 @@ export const Home = (): React.ReactElement => {
     dispatch(setShowTablesInfos(true));
   }
 
-  function renderNewDbButton(): boolean {
-    return schemas.length < 2 && selectedTables.length < 2;
+  function renderFirstDbButton(): boolean {
+    return schemas.length === 0;
+  }
+
+  function renderSecondDbButton(): boolean {
+    return schemas.length === 1;
   }
 
   function renderGenericHeader(): React.ReactElement | any {
@@ -121,15 +125,27 @@ export const Home = (): React.ReactElement => {
           )
         )}
 
-        {renderNewDbButton() && (
-          <button
-            type="button"
-            onClick={openDatabaseModal}
-            className={styles.primary}
-          >
-            New database
-          </button>
-        )}
+        <div>
+          {renderFirstDbButton() && (
+            <button
+              type="button"
+              onClick={openDatabaseModal}
+              className={styles.primary}
+            >
+              Add first database
+            </button>
+          )}
+
+          {renderSecondDbButton() && (
+            <button
+              type="button"
+              onClick={openDatabaseModal}
+              className={styles.primary}
+            >
+              Add second database
+            </button>
+          )}
+        </div>
 
         <div className={styles.leftSide}>
           {!showTablesInfos && (

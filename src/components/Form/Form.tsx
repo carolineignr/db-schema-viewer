@@ -78,14 +78,6 @@ const Form = (): ReactElement => {
     clearInputs();
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (schemas.length === 2) {
-        alert('Second database saved!');
-      }
-    }, 1000);
-  }, [schemas]);
-
   return (
     <>
       <section className={styles.container}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '../../utils/types';
-import Table from '../../views/Table/Table';
+import TableComparison from '../../views/TableComparison/TableComparison';
 import styles from './Tabs.module.scss';
 
 const Tabs = (): React.ReactElement => {
@@ -18,13 +18,13 @@ const Tabs = (): React.ReactElement => {
       id: 1,
       tabTitle: `${schemaName1} - ${tableName1}`,
       title: 'Title 1',
-      content: <Table table={selectedTables[0]} />,
+      content: <TableComparison table={selectedTables[0]} />,
     },
     {
       id: 2,
       tabTitle: `${schemaName2} - ${tableName2}`,
       title: 'Title 2',
-      content: <Table table={selectedTables[1]} />,
+      content: <TableComparison table={selectedTables[1]} />,
     },
   ];
 
