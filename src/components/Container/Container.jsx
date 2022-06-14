@@ -28,39 +28,53 @@ export const Container = (customizedProps) => {
     ));
   }
 
-  function renderSchemas() {
-    return schemas.map((schema) => (
-      <div className={styles.schema__container}>
-        <Header schema={schema} />
+  function renderSchemas(schema) {
+    return (
+      schema.tables && (
+        <div className={styles.schema__container}>
+          <Header schema={schema} />
 
-        <div className={styles.canvas__wrapper}>
-          <Canvas>
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            <OrbitControls />
-            <OrthographicCamera makeDefault position={[50, 10, 10]} zoom={30} />
-            <Flex
-              justifyContent="center"
-              alignItems="center"
-              flexDir="row"
-              flexWrap="wrap"
-              size={[40, 10, 10]}
-            >
-              {renderTables(schema)}
-              {/* Teste com múltiplas tabelas */}
-              {/* {renderTables(schema)}
-              {renderTables(schema)}
-              {renderTables(schema)}
-              {renderTables(schema)}
-              {renderTables(schema)} */}
-            </Flex>
-          </Canvas>
+          <div className={styles.canvas__wrapper}>
+            <Canvas>
+              <ambientLight />
+              <pointLight position={[10, 10, 10]} />
+              <OrbitControls />
+              <OrthographicCamera
+                makeDefault
+                position={[50, 10, 10]}
+                zoom={30}
+              />
+              <Flex
+                justifyContent="center"
+                alignItems="center"
+                flexDir="row"
+                flexWrap="wrap"
+                size={[40, 10, 10]}
+              >
+                {renderTables(schema)}
+                {/* Teste com múltiplas tabelas */}
+                {/* {renderTables(schema)}
+                {renderTables(schema)}
+                {renderTables(schema)}
+                {renderTables(schema)}
+                {renderTables(schema)} */}
+              </Flex>
+            </Canvas>
+          </div>
         </div>
-      </div>
-    ));
+      )
+    );
   }
 
-  return <div>{showTablesInfos ? <Tabs /> : renderSchemas()}</div>;
+  return (
+    <div>
+      {showTablesInfos ? (
+        <Tabs />
+      ) : (
+        schemas.map((schema) => renderSchemas(schema))
+      )}
+    </div>
+  );
 };
 
 export default Container;

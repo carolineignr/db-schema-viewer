@@ -1,6 +1,7 @@
 import React, { ReactElement, ChangeEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 
 import {
   setDatabaseModal,
@@ -15,7 +16,6 @@ import styles from './Form.module.scss';
 
 const Form = (): ReactElement => {
   const { inputParams, schemas } = useSelector((state: ReduxState) => state);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function clearInputs(): void {
@@ -40,13 +40,15 @@ const Form = (): ReactElement => {
   async function loadSchema(): Promise<void> {
     try {
       const data: any = await requests.SCHEMA_GET(inputParams);
-      if (data.tables?.length < 1) {
+      if (!data.tables) {
         throw new Error('It was not possible to access the informed database.');
       }
 
       dispatch(setSchema(data));
     } catch (error) {
-      alert(error);
+      swal(error, {
+        icon: 'error',
+      });
       console.log(error);
     }
   }
@@ -54,13 +56,26 @@ const Form = (): ReactElement => {
   const handleSubmit = async (event: any): Promise<void> => {
     event.preventDefault();
 
-    await loadSchema();
-    dispatch(setDatabaseModal(false));
-    clearInputs();
+    try {
+      await loadSchema();
+      dispatch(setDatabaseModal(false));
+      clearInputs();
+
+      swal('Database saved!', {
+        icon: 'success',
+      });
+    } catch (e) {
+      console.log(e);
+      swal(
+        'Unfortunatelly we found a problem to save this database informations.',
+        { icon: 'error' },
+      );
+    }
   };
 
   function handleCloseDatabaseModal(): void {
     dispatch(setDatabaseModal(false));
+    clearInputs();
   }
 
   useEffect(() => {
@@ -84,7 +99,7 @@ const Form = (): ReactElement => {
           Close
         </span>
         <form onSubmit={handleSubmit}>
-          <p>Database access information</p>
+          <span className={styles.title}>Database access information</span>
           <label htmlFor="host">
             Host address
             <input
