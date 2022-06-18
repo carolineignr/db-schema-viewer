@@ -76,7 +76,7 @@ export const Table = (props: any): React.ReactElement => {
         <div className={styles.infos}>
           <div>
             <span>Total number of columns</span>
-            <p>{props.table.columns.length}</p>
+            <p style={{ fontSize: '3rem' }}>{props.table.columns.length}</p>
           </div>
           <div>
             <span>Comments</span>
@@ -89,7 +89,7 @@ export const Table = (props: any): React.ReactElement => {
           </div>
           <div>
             <span>How many tables relationships</span>
-            <p>{relationWith()}</p>
+            <p style={{ fontSize: '3rem' }}>{relationWith()}</p>
           </div>
         </div>
       </div>

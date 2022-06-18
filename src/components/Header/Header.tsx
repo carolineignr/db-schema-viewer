@@ -21,7 +21,7 @@ export const Header = ({ schema, currentTable }: any): React.ReactElement => {
         <div className={styles.database}>
           <span>Database name</span>
           <p>{schema.tables[0].columns[0].rawInfo.table_catalog}</p>
-          <span>Total columns: {schema.tables.length}</span>
+          <span>Total tables: {schema.tables.length}</span>
         </div>
       </>
     );
