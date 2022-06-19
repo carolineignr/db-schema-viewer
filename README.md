@@ -1,8 +1,11 @@
 ## Documentação aplicação
 
 O objetivo desta aplicação é ajudar principalmente DBAs ou pessoas que precisem consumir dados para manter o funcionamento de uma aplicação, com uma interface que busca facilitar o entendimento das estruturas das bases que armazenam estes dados.
+
 Conforme citados em diversos artigos e projetos (aqui posso citar algum), existe um desafio conhecido em combinar dados vindos de diferentes fontes, em grande parte porque estes dados estão dispostos nessas bases de formas diferentes, já que cada base foi pensada e populada por pessoas/organizações diferentes, cada uma com seus padrões. Para que sejam possível realizar esse consumo de dados de uma forma eficiente, é preciso conhecer como acessá-los e pensar em como tratá-los quando estiverem em uma API por exemplo. 
+
 Fazer isso de forma manual é um problema porque cada base possui uma tabela, que por sua vez possui diversas colunas com suas particularidades. Buscar essas informações consome uma quantidade considerável de tempo que poderia ser usado no problema central da pessoa/organização que precisa dos dados. Pensar fazer isso em diversas bases de dados diferentes só aumenta a complexidade do processo e o tempo que será necessário para executá-lo.
+
 Esse projeto busca facilitar o acesso a essas informações através de uma aplicação que acessa uma base de dados informada pelo usuário, coleta informações sobre a estrutura dessa base, e apresenta o retorno deste processo através de uma interface amigável e simples, repassando para o usuário informações que facilitam seu entendimento sobre essa estrutura. Para entender diferenças e similaridades entre fontes de dados heterogêneas, é possível adicionar mais de uma base simultaneamente e realizar então a comparação entre ambas.
 
 #### Sobre o projeto
@@ -19,16 +22,16 @@ Para tornar mais simples testes de uso da aplicação, foram adicionadas duas ba
 Para testar a aplicação, é possível então utilizar essas bases de dados e passar suas informações durante o uso do app.
 
 A primeira base possui os seguintes dados de acesso:
-Host: castor.db.elephantsql.com
-Database name: hgllojip
-User name: hgllojip
-Senha: FzaCnomCMDcppxGH6Xl84XmWcG3Gahpk
+- Host: castor.db.elephantsql.com
+- Database name: hgllojip
+- User name: hgllojip
+- Senha: FzaCnomCMDcppxGH6Xl84XmWcG3Gahpk
 
 A segunda base possui os seguintes dados de acesso:
-Host: castor.db.elephantsql.com
-Database name: sxpjoesf
-User name: sxpjoesf
-Senha: 6xeTVWEk7rmr65ScoKZ-nS2kfZm-xC5U
+- Host: castor.db.elephantsql.com
+- Database name: sxpjoesf
+- User name: sxpjoesf
+- Senha: 6xeTVWEk7rmr65ScoKZ-nS2kfZm-xC5U
 
 ## Available Scripts
 
