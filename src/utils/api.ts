@@ -6,7 +6,7 @@ const GET_SCHEMA_PATH = 'api/database-schema';
 export const SCHEMA_GET = async (
   dbAccessParams: DatabaseInputParams,
 ): Promise<Object> => {
-  const url = `http://db-viewer-api.herokuapp.com/${GET_SCHEMA_PATH}`;
+  const url = `https://db-viewer-api.herokuapp.com/${GET_SCHEMA_PATH}`;
 
   const { data } = await axios.post(url, { dbAccessParams });
   return data;
