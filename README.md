@@ -17,9 +17,11 @@ Como uma das propostas era expor essas estruturas das bases, foi utilizado o fra
 
 #### Como testar
 
-Para tornar mais simples testes de uso da aplicação, foram adicionadas duas bases de dados em duas diferentes instâncias da ferramenta web ElephantSQL, que permite criar e realizar alterações em bases de dados diretamente do navegador. Todos os passos de instância do servidor e demais configurações são abstraídos, bastando apenas informar algumas preferências. Para fins de testes, o plano gratuito da aplicação atende muito bem. As bases criadas são similares para testar o propósito da análise de múltiplas bases heterogêneas. 
+Para tornar mais simples testes de uso da aplicação, foram adicionadas duas bases de dados em duas diferentes instâncias da ferramenta web ElephantSQL, que permite criar e realizar alterações em bases de dados diretamente do navegador. Todos os passos de instância do servidor e demais configurações são abstraídos, bastando apenas informar algumas preferências. Para fins de testes, o plano gratuito da aplicação atende muito bem, porém tem o ponto negativo de não poder alterar o nome das bases, sendo assim o nome da base de dados e do usuário é o padrão fornecido pela ferramenta. As bases criadas são similares para testar o propósito da análise de múltiplas bases heterogêneas. 
 
 Para testar a aplicação, é possível então utilizar essas bases de dados e passar suas informações durante o uso do app.
+
+Realizar o acesso à aplicação através da URL https://db-schema-viewer.vercel.app/
 
 A primeira base possui os seguintes dados de acesso:
 - Host: castor.db.elephantsql.com
