@@ -6,7 +6,7 @@ Conforme citados em diversos artigos e projetos (aqui posso citar algum), existe
 
 Fazer isso de forma manual é um problema porque cada base possui uma tabela, que por sua vez possui diversas colunas com suas particularidades. Buscar essas informações consome uma quantidade considerável de tempo que poderia ser usado no problema central da pessoa/organização que precisa dos dados. Pensar fazer isso em diversas bases de dados diferentes só aumenta a complexidade do processo e o tempo que será necessário para executá-lo.
 
-Esse projeto busca facilitar o acesso a essas informações através de uma aplicação que acessa uma base de dados informada pelo usuário, coleta informações sobre a estrutura dessa base, e apresenta o retorno deste processo através de uma interface amigável e simples, repassando para o usuário informações que facilitam seu entendimento sobre essa estrutura. Para entender diferenças e similaridades entre fontes de dados heterogêneas, é possível adicionar mais de uma base simultaneamente e realizar então a comparação entre ambas.
+Esse projeto busca facilitar o acesso a esse processo, apresentando essas informações através de uma aplicação que acessa a base de dados informada pelo usuário, coleta informações sobre a estrutura desta base, e apresenta o retorno  através de uma interface amigável e simples, repassando para o usuário informações que facilitam seu entendimento sobre essa estrutura. Para entender diferenças e similaridades entre fontes de dados heterogêneas, o ideal é que o usuário da aplicação informe duas bases de dados heterogêneas e então faça a análise das as tabelas similares entre as estas duas bases.
 
 #### Sobre o projeto
 
