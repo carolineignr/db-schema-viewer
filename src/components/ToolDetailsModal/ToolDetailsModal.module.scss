@@ -1,44 +1,47 @@
 .container {
   padding: 1rem;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  overflow: auto;
+  justify-content: space-between;
 
   .exit__button {
     align-self: flex-end;
     cursor: pointer;
+
+    &:hover {
+      color: #FF5C40;
+    }
   }
 
   .title {
     border-bottom: 1px solid #000;
     padding-bottom: .5rem;
     margin-bottom: 1rem;
-    margin-top: 1rem;
     width: 100%;
+    font-size: 1.5rem;
   }
 
   .content {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
+    padding: 0 1rem;
     align-items: baseline;
+
+    .about {
+      margin-bottom: 1rem;
+    }
 
     p:not(.title) {
       font-weight: 700;
     }
 
-    span {
+    span:not(.exit__button) {
       margin: 1rem 0;
       opacity: 1;
     }
-  }
-
-  button {
-    margin: 1rem;
-    color: #000;
-	  border: 1px solid #000;
   }
 }
 

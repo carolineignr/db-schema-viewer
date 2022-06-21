@@ -38,10 +38,10 @@ const Sign = (): ReactElement => {
     <>
       <Modal
         isOpen={toolDetailsOpen}
-        onRequestClose={closeToolDetailsModal}
+        onRequestClose={() => closeToolDetailsModal()}
         className="modalCustomStyle"
       >
-        <ToolDetailsModal closeModal={closeToolDetailsModal} />
+        <ToolDetailsModal closeModal={() => closeToolDetailsModal()} />
       </Modal>
       <div className={styles.container}>
         <section className={styles.wrapper}>

@@ -13,7 +13,7 @@ export const ManipulateSceneTipsModal = ({
       onKeyPress={closeModal}
       tabIndex={0}
     >
-      Close
+      <i className="fa fa-close" />
     </span>
     <div className={styles.content}>
       <p className={styles.title}>Scene manipulation tips</p>

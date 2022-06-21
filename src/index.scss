@@ -39,13 +39,15 @@ button {
 
 .modalCustomStyle{
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	position: absolute;
 	inset: 40px;
 	background: transparent;
 	overflow: auto;
 	outline: none;
-	max-width: 450px;
+	width: auto;
+	max-width: 600px;
+	height: fit-content;
 	max-height: 620px;
 	margin: 0 auto;
 	background-color: white;
@@ -53,8 +55,8 @@ button {
 	border-radius: 10px;
 
 	button {
-		margin: .5rem 0;
-		border-color: none;
+    color: #000;
+	  border: 3px solid #000;
 	}
 }
 

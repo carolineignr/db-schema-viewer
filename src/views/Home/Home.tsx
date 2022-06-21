@@ -132,7 +132,7 @@ export const Home = (): React.ReactElement => {
               onClick={openDatabaseModal}
               className={styles.primary}
             >
-              Add first database
+              Add database
             </button>
           )}
 
@@ -142,7 +142,7 @@ export const Home = (): React.ReactElement => {
               onClick={openDatabaseModal}
               className={styles.primary}
             >
-              Add second database
+              Add database
             </button>
           )}
         </div>
@@ -165,6 +165,11 @@ export const Home = (): React.ReactElement => {
     );
   }
 
+  function handleClick(e): void {
+    console.log(e);
+    // onClickTable();
+  }
+
   useEffect(() => {
     Modal.setAppElement('#root');
   }, [schemas, navigate]);
@@ -173,7 +178,7 @@ export const Home = (): React.ReactElement => {
     <section className={styles.wrapper}>
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={closeDatabaseModal}
+        onRequestClose={() => closeDatabaseModal()}
         className="modalCustomStyle"
       >
         <Form />
@@ -181,10 +186,10 @@ export const Home = (): React.ReactElement => {
 
       <Modal
         isOpen={tipsModalOpen}
-        onRequestClose={closeTipsModal}
+        onRequestClose={() => closeTipsModal()}
         className="modalCustomStyle"
       >
-        <ManipulateSceneTipsModal closeModal={closeTipsModal} />
+        <ManipulateSceneTipsModal closeModal={() => closeTipsModal()} />
       </Modal>
 
       {renderGenericHeader()}
@@ -193,6 +198,7 @@ export const Home = (): React.ReactElement => {
         <Container
           schemas={schemas}
           selectedTables={selectedTables}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={onClickTable}
           showTablesInfos={showTablesInfos}
         />

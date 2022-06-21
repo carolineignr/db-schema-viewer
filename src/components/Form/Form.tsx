@@ -88,12 +88,12 @@ const Form = (): ReactElement => {
           onKeyPress={handleCloseDatabaseModal}
           tabIndex={0}
         >
-          Close
+          <i className="fa fa-close" />
         </span>
         <form onSubmit={handleSubmit}>
-          <span className={styles.title}>Database access information</span>
+          <span className={styles.title}>Access informations</span>
           <label htmlFor="host">
-            Host address
+            Database host address
             <input
               className={styles.formInput}
               name="host"
@@ -129,12 +129,15 @@ const Form = (): ReactElement => {
               type="password"
             />
           </label>
-          <button type="submit" className={styles.primary}>
-            Submit
-          </button>
-          <button type="button" onClick={handleCloseDatabaseModal}>
-            Cancel
-          </button>
+
+          <div>
+            <button type="button" onClick={handleCloseDatabaseModal}>
+              Cancel
+            </button>
+            <button type="submit" className={styles.primary}>
+              Submit
+            </button>
+          </div>
         </form>
       </section>
     </>
