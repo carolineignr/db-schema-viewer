@@ -165,7 +165,7 @@ export const Home = (): React.ReactElement => {
           {!showTablesInfos && (
             <>
               <button type="button" onClick={showTipsModal}>
-                Tips to manipulate the 3D scene
+                Important tips
               </button>
             </>
           )}

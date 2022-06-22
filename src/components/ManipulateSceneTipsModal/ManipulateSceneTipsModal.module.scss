@@ -1,32 +1,28 @@
 .container {
   padding: 1rem;
-  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: auto;
 
-  .title {
-    border-bottom: 1px solid #000;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    font-size: 1.5rem;
-  }
-
+  
   .content {
     display: flex;
     flex-direction: column;
-    padding: 1rem 0;
+    padding: 1rem;
     align-items: baseline;
 
-    p:not(.title) {
-      font-weight: 700;
+    .title {
+      border-bottom: 1px solid #000;
+      padding-bottom: 1rem;
+      margin: 1rem 0;
+      width: 100%;
+      font-size: 1.5rem;
     }
 
-    span {
-      margin: 1rem 0;
-      opacity: 1;
+    p:not(.title) {
+      margin-top: 1rem;
     }
   }
 
