@@ -36,7 +36,10 @@ export const setCurrentTable = (tableObj: {}): ReduxAction => ({
   payload: tableObj,
 });
 
-export const clearSchemas = (): ReduxAction => ({ type: 'CLEAR_SCHEMAS' });
+export const clearSchemas = (): ReduxAction => ({
+  type: 'CLEAR_SCHEMAS',
+  payload: [],
+});
 
 export const setSelectedTables = (tables: Array<TableState>): ReduxAction => ({
   type: 'SET_SELECTED_TABLES',
@@ -46,4 +49,9 @@ export const setSelectedTables = (tables: Array<TableState>): ReduxAction => ({
 export const setShowTablesInfos = (show: boolean): ReduxAction => ({
   type: 'SET_SHOW_TABLES_INFOS',
   payload: show,
+});
+
+export const setLoading = (loading: boolean): ReduxAction => ({
+  type: 'SET_LOADING',
+  payload: loading,
 });

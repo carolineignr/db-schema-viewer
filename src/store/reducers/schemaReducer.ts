@@ -31,7 +31,7 @@ export const schemaReducer = (
     case 'CLEAR_SCHEMAS':
       return {
         ...state,
-        schemas: [],
+        schemas: action.payload,
       };
     case 'SET_SELECTED_TABLES':
       return {
@@ -52,6 +52,11 @@ export const schemaReducer = (
       return {
         ...state,
         showTablesInfos: action.payload,
+      };
+    case 'SET_LOADING':
+      return {
+        ...state,
+        loading: action.payload,
       };
     default:
       return state;

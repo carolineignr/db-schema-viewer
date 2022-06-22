@@ -8,29 +8,29 @@ import { useNavigate } from 'react-router-dom';
 
 import Form from '../../components/Form/Form';
 import Container from '../../components/Container/Container.jsx';
+import ManipulateSceneTipsModal from '../../components/ManipulateSceneTipsModal/ManipulateSceneTipsModal';
+import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { ReduxState, TableState } from '../../utils/types';
 import {
   setDatabaseModal,
   setSelectedTables,
   setTipsModal,
   setShowTablesInfos,
+  clearSchemas,
 } from '../../store/actions/schemaActions';
 
 import styles from './Home.module.scss';
-import ManipulateSceneTipsModal from '../../components/ManipulateSceneTipsModal/ManipulateSceneTipsModal';
-import { EmptyState } from '../../components/EmptyState/EmptyState';
 
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const schemas = useSelector((state: ReduxState) => state.schemas);
   const currentState = useSelector((state: ReduxState) => state);
   const {
     selectedTables,
     databaseModalOpen,
     tipsModalOpen,
     showTablesInfos,
+    schemas,
   } = currentState;
   const isModalOpen = databaseModalOpen;
 
@@ -83,13 +83,17 @@ export const Home = (): React.ReactElement => {
     dispatch(setTipsModal(false));
   }
 
-  function clearSelectedSchemas(): void {
+  function clearSelectedTables(): void {
     dispatch(setSelectedTables([]));
     dispatch(setShowTablesInfos(false));
   }
 
+  function handleClearSchemas(): void {
+    dispatch(clearSchemas());
+  }
+
   function exitApp(): void {
-    clearSelectedSchemas();
+    clearSelectedTables();
     dispatch(setShowTablesInfos(false));
     navigate('/');
   }
@@ -106,11 +110,12 @@ export const Home = (): React.ReactElement => {
     return schemas.length === 1;
   }
 
+  // needs refactor
   function renderGenericHeader(): React.ReactElement | any {
     return (
       <div className={styles.home_header__container}>
         {selectedTables.length === 2 && showTablesInfos ? (
-          <button type="button" onClick={clearSelectedSchemas}>
+          <button type="button" onClick={clearSelectedTables}>
             Back to schemas
           </button>
         ) : (
@@ -142,19 +147,30 @@ export const Home = (): React.ReactElement => {
               onClick={openDatabaseModal}
               className={styles.primary}
             >
-              Add database
+              Add another database
             </button>
           )}
         </div>
 
         <div className={styles.leftSide}>
-          {!showTablesInfos && (
-            <button type="button" onClick={showTipsModal}>
-              Tips to manipulate the 3D scene
+          {schemas.length > 0 && (
+            <button
+              className="ml_1 mr_1"
+              type="button"
+              onClick={handleClearSchemas}
+            >
+              Clear schemas
             </button>
           )}
+          {!showTablesInfos && (
+            <>
+              <button type="button" onClick={showTipsModal}>
+                Tips to manipulate the 3D scene
+              </button>
+            </>
+          )}
           <button
-            className={styles.exit__button}
+            className={`${styles.exit__button} ml-1`}
             type="button"
             onClick={exitApp}
           >
@@ -165,14 +181,9 @@ export const Home = (): React.ReactElement => {
     );
   }
 
-  function handleClick(e): void {
-    console.log(e);
-    // onClickTable();
-  }
-
   useEffect(() => {
     Modal.setAppElement('#root');
-  }, [schemas, navigate]);
+  }, []);
 
   return (
     <section className={styles.wrapper}>
