@@ -1,8 +1,19 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
 	max-width: 1024px;
 	margin: 0 auto;
+	width: 100%;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: inherit;
 }
 
 .modal__container {
@@ -16,25 +27,40 @@
 	&__container {
 		display: flex;
 		justify-content: space-between;
+		align-items: baseline;
 		margin-top: 1rem;
+		width: inherit;
 
 		.primary__button {
 			background: url('./../../assets/images/gradient.png');
 			background-size: 15rem;
 			opacity: .9;
-			margin-left: 1rem;
 			color: #000;
 			border: none;
 		}
+	}
+}
 
-		.exit__button {
-			border: none;
-			text-decoration: underline;
-		}
+.group_secondary__button{
+	display: flex;
+	border: 1px solid rgba(0, 0, 0, 0.17);
+	border-radius: 10px;
+	padding: .5rem;
 
-		.group_secondary__button{
-			display: flex;
-			justify-content: space-between;
+	button {
+		font-size: .7rem;
+		font-weight: 500;
+		padding: .5rem;
+		border: none;
+		text-align: justify;
+	}
+
+	.exit__button {
+		border: none;
+		text-decoration: underline;
+
+		&:hover {
+			color: rgb(131, 47, 1);
 		}
 	}
 }

@@ -106,14 +106,56 @@ export const Home = (): React.ReactElement => {
   }
 
   function renderAddButton(): boolean {
-    return schemas.length < 2 && !showTablesInfos;
+    return !showTablesInfos && schemas.length < 2;
+  }
+
+  function renderBackButton(): boolean {
+    return selectedTables.length === 2 && showTablesInfos;
+  }
+
+  function renderClearSchemasButton(): boolean {
+    return selectedTables.length === 2 && !showTablesInfos;
+  }
+
+  function renderLeftsideButtons(): React.ReactElement {
+    return (
+      <div className={styles.group_secondary__button}>
+        {renderBackButton() && (
+          <button type="button" onClick={clearSelectedTables}>
+            Back to schemas |
+          </button>
+        )}
+
+        {schemas.length > 0 && !showTablesInfos && (
+          <button type="button" onClick={handleClearSchemas}>
+            Clear schemas |
+          </button>
+        )}
+
+        {!showTablesInfos && (
+          <>
+            <button type="button" onClick={showTipsModal}>
+              Important tips |
+            </button>
+          </>
+        )}
+
+        <button
+          className={`${styles.exit__button} ml-1`}
+          type="button"
+          onClick={exitApp}
+        >
+          Exit
+        </button>
+      </div>
+    );
   }
 
   // needs refactor
-  function renderGenericHeader(): React.ReactElement | any {
+  function renderHeader(): React.ReactElement | any {
     return (
       <div className={styles.header__container}>
-        {renderAddButton && (
+        {renderAddButton() && (
           <button
             type="button"
             onClick={openDatabaseModal}
@@ -123,49 +165,34 @@ export const Home = (): React.ReactElement => {
           </button>
         )}
 
-        {selectedTables.length === 2 && showTablesInfos ? (
-          <button type="button" onClick={clearSelectedTables}>
-            Back to schemas
+        {renderClearSchemasButton() && (
+          <button
+            type="button"
+            onClick={handleShowTablesInfos}
+            className={styles.primary__button}
+          >
+            Check these tables
           </button>
-        ) : (
-          selectedTables.length === 2 && (
-            <button
-              type="button"
-              onClick={handleShowTablesInfos}
-              className={styles.primary__button}
-            >
-              Check these tables
-            </button>
-          )
         )}
 
-        <div className={styles.group_secondary__button}>
-          {schemas.length > 0 && !showTablesInfos && (
-            <button
-              className="ml_1 mr_1"
-              type="button"
-              onClick={handleClearSchemas}
-            >
-              Clear schemas
-            </button>
-          )}
+        {renderLeftsideButtons()}
+      </div>
+    );
+  }
 
-          {!showTablesInfos && (
-            <>
-              <button type="button" onClick={showTipsModal}>
-                Important tips
-              </button>
-            </>
-          )}
-
-          <button
-            className={`${styles.exit__button} ml-1`}
-            type="button"
-            onClick={exitApp}
-          >
-            Exit
-          </button>
-        </div>
+  function renderContainer(): React.ReactElement {
+    return (
+      <div className={styles.container}>
+        {schemas.length > 0 ? (
+          <Container
+            schemas={schemas}
+            selectedTables={selectedTables}
+            onClick={onClickTable}
+            showTablesInfos={showTablesInfos}
+          />
+        ) : (
+          <EmptyState />
+        )}
       </div>
     );
   }
@@ -192,18 +219,8 @@ export const Home = (): React.ReactElement => {
         <ManipulateSceneTipsModal closeModal={() => closeTipsModal()} />
       </Modal>
 
-      {renderGenericHeader()}
-
-      {schemas.length > 0 ? (
-        <Container
-          schemas={schemas}
-          selectedTables={selectedTables}
-          onClick={onClickTable}
-          showTablesInfos={showTablesInfos}
-        />
-      ) : (
-        <EmptyState />
-      )}
+      {renderHeader()}
+      {renderContainer()}
     </section>
   );
 };

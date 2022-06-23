@@ -68,13 +68,13 @@ export const Container = (customizedProps) => {
   }
 
   return (
-    <div>
+    <>
       {showTablesInfos ? (
         <Tabs />
       ) : (
         schemas.map((schema) => renderSchemas(schema))
       )}
-    </div>
+    </>
   );
 };
 

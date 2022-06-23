@@ -1,6 +1,7 @@
 .schema {
   &__container {
     margin: 1rem 0;
+    width: inherit;
     
     div > canvas {
       height: 450px;
