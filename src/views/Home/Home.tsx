@@ -1,6 +1,5 @@
-/* eslint-disable no-alert */
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable import/no-named-as-default */
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -60,8 +59,10 @@ export const Home = (): React.ReactElement => {
   }
 
   function onClickTable(table: TableState): any {
+    console.log(selectedTables);
     if (alreadyInSelectedTables(table)) {
-      return removeObjFromSelectedTables(table);
+      removeObjFromSelectedTables(table);
+      return;
     }
 
     if (selectedTables.length < 2) {
@@ -105,13 +106,23 @@ export const Home = (): React.ReactElement => {
   }
 
   function renderAddButton(): boolean {
-    return schemas.length < 2;
+    return schemas.length < 2 && !showTablesInfos;
   }
 
   // needs refactor
   function renderGenericHeader(): React.ReactElement | any {
     return (
-      <div className={styles.home_header__container}>
+      <div className={styles.header__container}>
+        {renderAddButton && (
+          <button
+            type="button"
+            onClick={openDatabaseModal}
+            className={styles.primary__button}
+          >
+            Add database
+          </button>
+        )}
+
         {selectedTables.length === 2 && showTablesInfos ? (
           <button type="button" onClick={clearSelectedTables}>
             Back to schemas
@@ -121,25 +132,15 @@ export const Home = (): React.ReactElement => {
             <button
               type="button"
               onClick={handleShowTablesInfos}
-              className={styles.primary}
+              className={styles.primary__button}
             >
               Check these tables
             </button>
           )
         )}
 
-        {renderAddButton && (
-          <button
-            type="button"
-            onClick={openDatabaseModal}
-            className={styles.primary}
-          >
-            Add database
-          </button>
-        )}
-
-        <div className={styles.leftSide}>
-          {schemas.length > 0 && (
+        <div className={styles.group_secondary__button}>
+          {schemas.length > 0 && !showTablesInfos && (
             <button
               className="ml_1 mr_1"
               type="button"
@@ -148,6 +149,7 @@ export const Home = (): React.ReactElement => {
               Clear schemas
             </button>
           )}
+
           {!showTablesInfos && (
             <>
               <button type="button" onClick={showTipsModal}>
@@ -155,6 +157,7 @@ export const Home = (): React.ReactElement => {
               </button>
             </>
           )}
+
           <button
             className={`${styles.exit__button} ml-1`}
             type="button"
@@ -195,7 +198,7 @@ export const Home = (): React.ReactElement => {
         <Container
           schemas={schemas}
           selectedTables={selectedTables}
-          onClick={() => onClickTable}
+          onClick={onClickTable}
           showTablesInfos={showTablesInfos}
         />
       ) : (
