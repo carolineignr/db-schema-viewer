@@ -14,7 +14,7 @@ import Table from '../Table/Table.jsx';
 import styles from './Container.module.scss';
 
 export const Container = (customizedProps) => {
-  const { schemas, onClick, showTablesInfos } = customizedProps;
+  const { schemas, onClick, showTablesInfos, selectedTables } = customizedProps;
 
   function renderTables(schema) {
     return schema.tables.map((table) => (
@@ -24,6 +24,7 @@ export const Container = (customizedProps) => {
         table={table}
         key={table.name}
         onClick={onClick}
+        selectedTables={selectedTables}
       />
     ));
   }
@@ -31,7 +32,7 @@ export const Container = (customizedProps) => {
   function renderSchemas(schema) {
     return (
       schema.tables && (
-        <div className={styles.schema__container}>
+        <div className={styles.schema__container} key={schema.id}>
           <Header schema={schema} />
 
           <div className={styles.canvas__wrapper}>

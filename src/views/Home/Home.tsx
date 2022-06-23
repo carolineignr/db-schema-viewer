@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 import Form from '../../components/Form/Form';
 import Container from '../../components/Container/Container.jsx';
@@ -24,6 +25,7 @@ import styles from './Home.module.scss';
 export const Home = (): React.ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const currentState = useSelector((state: ReduxState) => state);
   const {
     selectedTables,
@@ -38,7 +40,7 @@ export const Home = (): React.ReactElement => {
     dispatch(setDatabaseModal(false));
   }
 
-  function objectAlreadyIn(clickedTable): any {
+  function alreadyInSelectedTables(clickedTable): any {
     return selectedTables.find(
       (table) => JSON.stringify(table) === JSON.stringify(clickedTable),
     );
@@ -58,16 +60,15 @@ export const Home = (): React.ReactElement => {
   }
 
   function onClickTable(table: TableState): any {
-    if (selectedTables.length <= 2) {
-      if (objectAlreadyIn(table)) {
-        removeObjFromSelectedTables(table);
-      } else {
-        selectedTables.push(table);
-        dispatch(setSelectedTables(selectedTables));
-      }
+    if (alreadyInSelectedTables(table)) {
+      return removeObjFromSelectedTables(table);
+    }
+
+    if (selectedTables.length < 2) {
+      selectedTables.push(table);
+      dispatch(setSelectedTables(selectedTables));
     } else {
-      alert('Already have two tables');
-      console.log('Already have two tables');
+      swal('Already have two tables');
     }
   }
 
@@ -90,6 +91,7 @@ export const Home = (): React.ReactElement => {
 
   function handleClearSchemas(): void {
     dispatch(clearSchemas());
+    dispatch(setSelectedTables([]));
   }
 
   function exitApp(): void {

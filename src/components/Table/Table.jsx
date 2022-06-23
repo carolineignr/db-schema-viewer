@@ -9,7 +9,7 @@ export const Table = (props) => {
   const [hover, setHover] = useState(false);
   const mesh = useRef();
   const rotation = 0.01;
-  const { onClick, table, position, textPosition } = props;
+  const { onClick, table, position, textPosition, selectedTables } = props;
 
   useFrame(() => {
     mesh.current.rotation.x += rotation;
@@ -25,7 +25,9 @@ export const Table = (props) => {
   }
 
   function handleClick() {
-    setActive(!active);
+    if (selectedTables.length !== 2) setActive(!active);
+    if (active) setActive(false);
+
     onClick(table);
   }
 
