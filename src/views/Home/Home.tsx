@@ -104,12 +104,8 @@ export const Home = (): React.ReactElement => {
     dispatch(setShowTablesInfos(true));
   }
 
-  function renderFirstDbButton(): boolean {
-    return schemas.length === 0;
-  }
-
-  function renderSecondDbButton(): boolean {
-    return schemas.length === 1;
+  function renderAddButton(): boolean {
+    return schemas.length < 2;
   }
 
   // needs refactor
@@ -132,27 +128,15 @@ export const Home = (): React.ReactElement => {
           )
         )}
 
-        <div>
-          {renderFirstDbButton() && (
-            <button
-              type="button"
-              onClick={openDatabaseModal}
-              className={styles.primary}
-            >
-              Add database
-            </button>
-          )}
-
-          {renderSecondDbButton() && (
-            <button
-              type="button"
-              onClick={openDatabaseModal}
-              className={styles.primary}
-            >
-              Add another database
-            </button>
-          )}
-        </div>
+        {renderAddButton && (
+          <button
+            type="button"
+            onClick={openDatabaseModal}
+            className={styles.primary}
+          >
+            Add database
+          </button>
+        )}
 
         <div className={styles.leftSide}>
           {schemas.length > 0 && (
@@ -211,8 +195,7 @@ export const Home = (): React.ReactElement => {
         <Container
           schemas={schemas}
           selectedTables={selectedTables}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={onClickTable}
+          onClick={() => onClickTable}
           showTablesInfos={showTablesInfos}
         />
       ) : (
