@@ -21,7 +21,7 @@ Para tornar mais simples testes de uso da aplicação, foram adicionadas duas ba
 
 Para testar a aplicação, é possível então utilizar essas bases de dados e passar suas informações durante o uso do app.
 
-Realizar o acesso à aplicação através da URL https://db-schema-viewer.vercel.app/
+Realizar o acesso à aplicação através da URL https://dbdata-view.vercel.app/
 
 A primeira base possui os seguintes dados de acesso:
 - Host: castor.db.elephantsql.com
